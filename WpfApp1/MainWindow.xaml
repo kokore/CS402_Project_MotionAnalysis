@@ -1,0 +1,30 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        xmlns:controls="clr-namespace:LightBuzz.Vitruvius.Controls;assembly=LightBuzz.Vitruvius"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="423" Width="769">
+    <Grid>
+        <Grid Grid.Row="1">
+            <controls:KinectViewer x:Name="viewer" />
+            <Canvas Height="274" Width="477" Margin="46,29,238,89">
+                <controls:KinectAngle x:Name="angle1" Opacity="0.5" Fill="Green" />
+                <controls:KinectAngle x:Name="angle2" Opacity="0.5" Fill="Blue" />
+                <controls:KinectAngle x:Name="angle3" Opacity="0.5" Fill="Red" />
+            </Canvas>
+        </Grid>
+        <Image x:Name="rompic" HorizontalAlignment="Left" Height="118" Margin="567,28,0,0" VerticalAlignment="Top" Width="158" RenderTransformOrigin="1.315,0.676"/>
+        <ComboBox x:Name="combo" HorizontalAlignment="Left" Margin="578,166,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Height="20" Margin="590,214,0,0" TextWrapping="Wrap" Text="X :" VerticalAlignment="Top" Width="29"/>
+        <TextBlock HorizontalAlignment="Left" Height="20" Margin="590,242,0,0" TextWrapping="Wrap" Text="Y :" VerticalAlignment="Top" Width="29"/>
+        <TextBlock HorizontalAlignment="Left" Height="20" Margin="590,270,0,0" TextWrapping="Wrap" Text="Z :" VerticalAlignment="Top" Width="29"/>
+        <Button Content="Start" HorizontalAlignment="Left" Margin="558,333,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Stop" HorizontalAlignment="Left" Margin="650,333,0,0" VerticalAlignment="Top" Width="75"/>
+        <TextBlock HorizontalAlignment="Left" Margin="116,353,0,0" TextWrapping="Wrap" Text="Angle :" VerticalAlignment="Top" Width="48"/>
+        <Image HorizontalAlignment="Left" Height="3" Margin="676,91,0,0" VerticalAlignment="Top" Width="4"/>
+
+    </Grid>
+</Window>
