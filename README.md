@@ -1,0 +1,2 @@
+# KinectDemo
+My thesis project
