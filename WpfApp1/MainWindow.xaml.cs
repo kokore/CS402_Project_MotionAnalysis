@@ -27,50 +27,34 @@ namespace WpfApp1
         PlayersController player;
 
         JointType _start1 = JointType.ShoulderRight;
-        JointType _center1 = JointType.ElbowRight;
+        JointType _center1 = JointType.ElbowRight; //Elbow
         JointType _end1 = JointType.WristRight;
 
         JointType _start2 = JointType.ElbowLeft;
-        JointType _center2 = JointType.ShoulderLeft;
+        JointType _center2 = JointType.ShoulderLeft; //shoulder
         JointType _end2 = JointType.SpineShoulder;
 
         JointType _start3 = JointType.AnkleRight;
-        JointType _center3 = JointType.KneeRight;
+        JointType _center3 = JointType.KneeRight; //Knee
         JointType _end3 = JointType.HipRight;
 
+        JointType _start4 = JointType.FootRight;
+        JointType _center4 = JointType.AnkleRight; //Ankle
+        JointType _end4 = JointType.KneeRight;
+
+        JointType _start5 = JointType.SpineBase;
+        JointType _center5 = JointType.HipLeft; //hip
+        JointType _end5 = JointType.KneeRight;
+
+
+
+        string value;
         public MainWindow()
         {
             InitializeComponent();
             sensor = KinectSensor.GetDefault();
 
-            combo.Items.Add("Hip");
-            combo.Items.Add("Knee");
-            combo.Items.Add("Ankle");
-            combo.Items.Add("Shoulder");
-            combo.Items.Add("Elbow");
-
-            BitmapImage b = new BitmapImage();
-            b.BeginInit();
-            switch (combo.ToString())
-            {
-                case "Hip":
-                    b.UriSource = new Uri("hip.JPG",UriKind.Relative);
-                    break;
-                case "Kenn":
-                    b.UriSource = new Uri("Kenn.JPG", UriKind.Relative);
-                    break;
-                case "Ankle":
-                    b.UriSource = new Uri("Ankle.JPG", UriKind.Relative);
-                    break;
-                case "Shoulder":
-                    b.UriSource = new Uri("Shoulder.JPG", UriKind.Relative);
-                    break;
-                case "Elbow":
-                    b.UriSource = new Uri("Eblow.JPG", UriKind.Relative);
-                    break;
-            }
-            b.EndInit();
-            rompic.Source = b;
+            
             if (sensor != null)
             {
                 sensor.Open();
@@ -81,10 +65,67 @@ namespace WpfApp1
                 player.BodyEntered += UserReporter_BodyEntered;
                 player.BodyLeft += UserReporter_BodyLeft;
                 player.Start();
+                
             }
         }
 
         
+
+        private void combo_Loaded(object sender, RoutedEventArgs e)
+        {
+            
+            List<string> data = new List<string>();
+            data.Add("Hip");
+            data.Add("Knee");
+            data.Add("Ankle");
+            data.Add("Shoulder");
+            data.Add("Elbow");
+            
+
+            // ... Get the ComboBox reference.
+            var comboBox = sender as ComboBox;
+
+            // ... Assign the ItemsSource to the List.
+            comboBox.ItemsSource = data;
+
+            
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // ... Get the ComboBox.
+            var comboBox = sender as ComboBox;
+
+            // ... Set SelectedItem as Window Title.
+            value = comboBox.SelectedItem as string;
+            Uri image;
+            
+            switch (value)
+            {
+                case "Hip":
+                    image = new Uri("C:\\Users\\KoKoR\\source\\repos\\WpfApp1\\WpfApp1\\Resources\\hip.JPG");
+                    rompic.Source = new BitmapImage(image);
+                    break;
+                case "Knee":
+                    image = new Uri("C:\\Users\\KoKoR\\source\\repos\\WpfApp1\\WpfApp1\\Resources\\Kenn.JPG");
+                    rompic.Source = new BitmapImage(image);
+                    break;
+                case "Ankle":
+                    image = new Uri("C:\\Users\\KoKoR\\source\\repos\\WpfApp1\\WpfApp1\\Resources\\Ankle.JPG");
+                    rompic.Source = new BitmapImage(image);
+                    break;
+                case "Shoulder":
+                    image = new Uri("C:\\Users\\KoKoR\\source\\repos\\WpfApp1\\WpfApp1\\Resources\\Shoulder.JPG");
+                    rompic.Source = new BitmapImage(image);
+                    break;
+                case "Elbow":
+                    image = new Uri("C:\\Users\\KoKoR\\source\\repos\\WpfApp1\\WpfApp1\\Resources\\Eblow.JPG");
+                    rompic.Source = new BitmapImage(image);
+                    break;
+            }
+        }
+
+
 
         private void Page_Unloaded(object sender, RoutedEventArgs e)
         {
@@ -113,15 +154,20 @@ namespace WpfApp1
             angle2.Clear();
             angle3.Clear();
 
-            
+            angleankle.Text = "-";
+            angleeblow.Text = "-";
+            anglehip.Text = "-";
+            anglekenn.Text = "-";
+            angleshould.Text = "-";
+
         }
 
         private void UserReporter_BodyEntered(object sender, PlayersControllerEventArgs e)
         {
-            throw new NotImplementedException();
+            
         }
 
-        private void Reader_MultiSourceFrameArrived(object sender, MultiSourceFrameArrivedEventArgs e)
+        public void Reader_MultiSourceFrameArrived(object sender, MultiSourceFrameArrivedEventArgs e)
         {
             var reference = e.FrameReference.AcquireFrame();
 
@@ -152,14 +198,23 @@ namespace WpfApp1
                     {
                         viewer.DrawBody(body);
 
-                        angle1.Update(body.Joints[_start1], body.Joints[_center1], body.Joints[_end1], 50);
-                        angle2.Update(body.Joints[_start2], body.Joints[_center2], body.Joints[_end2], 50);
-                        angle3.Update(body.Joints[_start3], body.Joints[_center3], body.Joints[_end3], 50);
+                        angle1.Update(body.Joints[_start1], body.Joints[_center1], body.Joints[_end1], 1); //eblow
+                        angle2.Update(body.Joints[_start2], body.Joints[_center2], body.Joints[_end2], 1); //shoulder
+                        angle3.Update(body.Joints[_start3], body.Joints[_center3], body.Joints[_end3], 1); //knee
+                        angle4.Update(body.Joints[_start4], body.Joints[_center4], body.Joints[_end4], 1); //Ankle
+                        angle5.Update(body.Joints[_start5], body.Joints[_center5], body.Joints[_end5], 1); //hip
 
-                        
+                        angleankle.Text = ((int)angle4.Angle).ToString(); 
+                        angleeblow.Text = ((int)angle1.Angle).ToString(); 
+                        anglehip.Text = ((int)angle5.Angle).ToString();
+                        anglekenn.Text = ((int)angle3.Angle).ToString();
+                        angleshould.Text = ((int)angle2.Angle).ToString();
                     }
                 }
             }
         }
+
+        
+
     }
 }
