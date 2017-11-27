@@ -42,9 +42,9 @@ namespace WpfApp1
         JointType _center4 = JointType.AnkleRight; //Ankle
         JointType _end4 = JointType.KneeRight;
 
-        JointType _start5 = JointType.SpineBase;
-        JointType _center5 = JointType.HipLeft; //hip
-        JointType _end5 = JointType.KneeRight;
+        JointType _start5 = JointType.KneeRight;
+        JointType _center5 = JointType.HipRight; //hip
+        JointType _end5 = JointType.AnkleRight;
 
 
 
@@ -75,12 +75,14 @@ namespace WpfApp1
         {
             
             List<string> data = new List<string>();
-            data.Add("Hip");
-            data.Add("Knee");
-            data.Add("Ankle");
-            data.Add("Shoulder");
-            data.Add("Elbow");
-            
+            data.Add("Hip extension");
+            data.Add("Hip flexion");
+            data.Add("Kenn extension");
+            data.Add("Kenn flexion");
+            data.Add("Shoulder flexion");
+            data.Add("Elbow flexion");
+            data.Add("Elbow extension");
+
 
             // ... Get the ComboBox reference.
             var comboBox = sender as ComboBox;
@@ -153,13 +155,8 @@ namespace WpfApp1
             angle1.Clear();
             angle2.Clear();
             angle3.Clear();
-
-            angleankle.Text = "-";
-            angleeblow.Text = "-";
-            anglehip.Text = "-";
-            anglekenn.Text = "-";
-            angleshould.Text = "-";
-
+            angle4.Clear();
+            angle5.Clear();
         }
 
         private void UserReporter_BodyEntered(object sender, PlayersControllerEventArgs e)
@@ -200,15 +197,53 @@ namespace WpfApp1
 
                         angle1.Update(body.Joints[_start1], body.Joints[_center1], body.Joints[_end1], 1); //eblow
                         angle2.Update(body.Joints[_start2], body.Joints[_center2], body.Joints[_end2], 1); //shoulder
-                        angle3.Update(body.Joints[_start3], body.Joints[_center3], body.Joints[_end3], 1); //knee
+                        angle3.Update(body.Joints[_start3], body.Joints[_center3], body.Joints[_end3], 1); //kenn
                         angle4.Update(body.Joints[_start4], body.Joints[_center4], body.Joints[_end4], 1); //Ankle
                         angle5.Update(body.Joints[_start5], body.Joints[_center5], body.Joints[_end5], 1); //hip
 
-                        angleankle.Text = ((int)angle4.Angle).ToString(); 
-                        angleeblow.Text = ((int)angle1.Angle).ToString(); 
-                        anglehip.Text = ((int)angle5.Angle).ToString();
-                        anglekenn.Text = ((int)angle3.Angle).ToString();
-                        angleshould.Text = ((int)angle2.Angle).ToString();
+                        
+                        if (value.Equals("Hip extension"))
+                        {
+                            namebody.Text = value;
+                            anglebody.Text = "NaN";
+
+                        }else if (value.Equals("Hip flexion"))
+                        {
+                            namebody.Text = value;
+                            anglebody.Text = ((int)angle3.Angle).ToString();
+                        }
+                        else if (value.Equals("Kenn extension"))
+                        {
+                            namebody.Text = value;
+                            if((int)angle3.Angle < 181)
+                            {
+                                anglebody.Text = ((int)angle3.Angle - 180).ToString();
+                            }
+                            
+                        }
+                        else if (value.Equals("Kenn flexion"))
+                        {
+                            namebody.Text = value;
+                            anglebody.Text = ((int)angle3.Angle - 180).ToString();
+                        }
+                        else if (value.Equals("Shoulder flexion"))
+                        {
+                            namebody.Text = value;
+                            anglebody.Text = ((int)angle2.Angle).ToString();
+                        }
+                        else if (value.Equals("Elbow flexion"))
+                        {
+                            namebody.Text = value;
+                            anglebody.Text = ((int)angle1.Angle).ToString();
+                        }
+                        else if (value.Equals("Elbow extension"))
+                        {
+                            namebody.Text = value;
+                            if((int) angle1.Angle > 180){
+                                anglebody.Text = ((int)angle1.Angle - 180).ToString();
+                            }
+                            
+                        }
                     }
                 }
             }

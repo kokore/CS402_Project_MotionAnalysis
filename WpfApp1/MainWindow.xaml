@@ -25,19 +25,10 @@
         </Grid>
 
 
+
         <Image x:Name="rompic" HorizontalAlignment="Left" Height="202" Margin="856,75,0,0"  VerticalAlignment="Top" Width="176" RenderTransformOrigin="1.315,0.676"  />
-        <ComboBox  HorizontalAlignment="Left" Margin="107,10,0,0" VerticalAlignment="Top" Width="120" Loaded="combo_Loaded" SelectionChanged="ComboBox_SelectionChanged"/>
-        <TextBlock FontSize="15" HorizontalAlignment="Left" Height="20" Margin="318,10,0,0" TextWrapping="Wrap" Text="Angle Eblow:" VerticalAlignment="Top" Width="95"/>
-        <TextBlock FontSize="15" HorizontalAlignment="Left" Height="20" Margin="318,32,0,0" TextWrapping="Wrap" Text="Angle Hip:" VerticalAlignment="Top" Width="78"/>
-        <TextBlock FontSize="15" HorizontalAlignment="Left" Height="20" Margin="531,36,0,0" TextWrapping="Wrap" Text="Angle Knee:" VerticalAlignment="Top" Width="95"/>
-        <TextBlock FontSize="15" HorizontalAlignment="Left" Margin="531,12,0,0" TextWrapping="Wrap" Text="Angle Ankle:" VerticalAlignment="Top" Width="95"/>
-
-        <TextBlock x:Name="angleankle" FontSize="20" HorizontalAlignment="Left" Margin="631,12,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="72"/>
-        <TextBlock FontSize="15" HorizontalAlignment="Left" Height="20" Margin="708,10,0,0" TextWrapping="Wrap" Text="Angle Should:" VerticalAlignment="Top" Width="95"/>
-        <TextBlock x:Name="anglekenn" FontSize="20" HorizontalAlignment="Left" Margin="631,36,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="62"/>
-        <TextBlock x:Name="angleshould" FontSize="20" HorizontalAlignment="Left" Margin="808,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="65"/>
-        <TextBlock x:Name="angleeblow" FontSize="20" HorizontalAlignment="Left" Margin="413,12,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="69"/>
-        <TextBlock x:Name="anglehip" FontSize="20" HorizontalAlignment="Left" Margin="401,32,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="59"/>
-
+        <ComboBox  HorizontalAlignment="Left" Margin="107,10,0,0" VerticalAlignment="Top" Width="120" Loaded="combo_Loaded" />
+        <TextBlock x:Name="namebody" FontSize="15" HorizontalAlignment="Left" Height="20" Margin="318,10,0,0" TextWrapping="Wrap" Text="e" VerticalAlignment="Top" Width="95"/>
+        <TextBlock x:Name="anglebody" FontSize="15" HorizontalAlignment="Left" Height="20" Margin="418,10,0,0" TextWrapping="Wrap" Text="e1" VerticalAlignment="Top" Width="96"/>
     </Grid>
 </Window>
