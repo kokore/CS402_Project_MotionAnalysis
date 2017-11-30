@@ -6,15 +6,19 @@
         xmlns:local="clr-namespace:WpfApp1"
         xmlns:controls="clr-namespace:LightBuzz.Vitruvius.Controls;assembly=LightBuzz.Vitruvius"
         mc:Ignorable="d"
-        Title="MainWindow" Height="1024" Width="1080"
+        Title="MainWindow" d:DesignHeight="700" d:DesignWidth="900"
         Unloaded="Page_Unloaded">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
 
         <Grid Grid.Row="1">
             <controls:KinectViewer x:Name="viewer" />
             <Viewbox>
-                <Canvas Height="1920" Width="1080" >
+                <Canvas Width="1920" Height="1080">
                     <controls:KinectAngle x:Name="angle1" Opacity="0.5" Fill="Green" />
                     <controls:KinectAngle x:Name="angle2" Opacity="0.5" Fill="Blue" />
                     <controls:KinectAngle x:Name="angle3" Opacity="0.5" Fill="Red" />
@@ -26,8 +30,8 @@
 
 
 
-        <Image x:Name="rompic" HorizontalAlignment="Left" Height="202" Margin="856,75,0,0"  VerticalAlignment="Top" Width="176" RenderTransformOrigin="1.315,0.676"  />
-        <ComboBox  HorizontalAlignment="Left" Margin="107,10,0,0" VerticalAlignment="Top" Width="120" Loaded="combo_Loaded" />
+        <Image x:Name="rompic" HorizontalAlignment="Left" Height="204" Margin="649,0,0,0"  VerticalAlignment="Top" Width="233" RenderTransformOrigin="1.315,0.676" Grid.RowSpan="2"  />
+        <ComboBox  HorizontalAlignment="Left" Margin="107,10,0,0" VerticalAlignment="Top" Width="120" Loaded="combo_Loaded" SelectionChanged="ComboBox_SelectionChanged"/>
         <TextBlock x:Name="namebody" FontSize="15" HorizontalAlignment="Left" Height="20" Margin="318,10,0,0" TextWrapping="Wrap" Text="e" VerticalAlignment="Top" Width="95"/>
         <TextBlock x:Name="anglebody" FontSize="15" HorizontalAlignment="Left" Height="20" Margin="418,10,0,0" TextWrapping="Wrap" Text="e1" VerticalAlignment="Top" Width="96"/>
     </Grid>

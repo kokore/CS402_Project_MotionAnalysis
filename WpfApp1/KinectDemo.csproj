@@ -88,6 +88,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -100,14 +101,15 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <None Include="Resources\hip.JPG" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Ankle.JPG" />
-    <Resource Include="Resources\Eblow.JPG" />
-    <Resource Include="Resources\Kenn.JPG" />
-    <Resource Include="Resources\Shoulder.JPG" />
+    <Resource Include="Resources\eblowexten.JPG" />
+    <Resource Include="Resources\eblowflex.JPG" />
+    <Resource Include="Resources\hipexten.JPG" />
+    <Resource Include="Resources\hipflex.JPG" />
+    <Resource Include="Resources\kennexten.JPG" />
+    <Resource Include="Resources\kennflex.JPG" />
+    <Resource Include="Resources\shoulderflex.JPG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

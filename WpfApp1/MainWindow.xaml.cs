@@ -91,6 +91,8 @@ namespace WpfApp1
             comboBox.ItemsSource = data;
 
             
+
+            
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -104,24 +106,32 @@ namespace WpfApp1
             
             switch (value)
             {
-                case "Hip":
-                    image = new Uri("C:\\Users\\KoKoR\\source\\repos\\WpfApp1\\WpfApp1\\Resources\\hip.JPG");
+                case "Hip extension":
+                    image = new Uri("C:\\Users\\KoKoR\\source\\repos\\WpfApp1\\WpfApp1\\Resources\\hipexten.JPG");
                     rompic.Source = new BitmapImage(image);
                     break;
-                case "Knee":
-                    image = new Uri("C:\\Users\\KoKoR\\source\\repos\\WpfApp1\\WpfApp1\\Resources\\Kenn.JPG");
+                case "Hip flexion":
+                    image = new Uri("C:\\Users\\KoKoR\\source\\repos\\WpfApp1\\WpfApp1\\Resources\\hipflex.JPG");
                     rompic.Source = new BitmapImage(image);
                     break;
-                case "Ankle":
-                    image = new Uri("C:\\Users\\KoKoR\\source\\repos\\WpfApp1\\WpfApp1\\Resources\\Ankle.JPG");
+                case "Kenn extension":
+                    image = new Uri("C:\\Users\\KoKoR\\source\\repos\\WpfApp1\\WpfApp1\\Resources\\kennexten.JPG");
                     rompic.Source = new BitmapImage(image);
                     break;
-                case "Shoulder":
-                    image = new Uri("C:\\Users\\KoKoR\\source\\repos\\WpfApp1\\WpfApp1\\Resources\\Shoulder.JPG");
+                case "Kenn flexion":
+                    image = new Uri("C:\\Users\\KoKoR\\source\\repos\\WpfApp1\\WpfApp1\\Resources\\kennflex.JPG");
                     rompic.Source = new BitmapImage(image);
                     break;
-                case "Elbow":
-                    image = new Uri("C:\\Users\\KoKoR\\source\\repos\\WpfApp1\\WpfApp1\\Resources\\Eblow.JPG");
+                case "Shoulder flexion":
+                    image = new Uri("C:\\Users\\KoKoR\\source\\repos\\WpfApp1\\WpfApp1\\Resources\\shoulderflex.JPG");
+                    rompic.Source = new BitmapImage(image);
+                    break;
+                case "Elbow flexion":
+                    image = new Uri("C:\\Users\\KoKoR\\source\\repos\\WpfApp1\\WpfApp1\\Resources\\eblowflex.JPG");
+                    rompic.Source = new BitmapImage(image);
+                    break;
+                case "Elbow extension":
+                    image = new Uri("C:\\Users\\KoKoR\\source\\repos\\WpfApp1\\WpfApp1\\Resources\\eblowexten.JPG");
                     rompic.Source = new BitmapImage(image);
                     break;
             }
@@ -195,53 +205,53 @@ namespace WpfApp1
                     {
                         viewer.DrawBody(body);
 
-                        angle1.Update(body.Joints[_start1], body.Joints[_center1], body.Joints[_end1], 1); //eblow
-                        angle2.Update(body.Joints[_start2], body.Joints[_center2], body.Joints[_end2], 1); //shoulder
-                        angle3.Update(body.Joints[_start3], body.Joints[_center3], body.Joints[_end3], 1); //kenn
-                        angle4.Update(body.Joints[_start4], body.Joints[_center4], body.Joints[_end4], 1); //Ankle
-                        angle5.Update(body.Joints[_start5], body.Joints[_center5], body.Joints[_end5], 1); //hip
+                        angle1.Update(body.Joints[_start1], body.Joints[_center1], body.Joints[_end1], 50); //eblow
+                        angle2.Update(body.Joints[_start2], body.Joints[_center2], body.Joints[_end2], 50); //shoulder
+                        angle3.Update(body.Joints[_start3], body.Joints[_center3], body.Joints[_end3], 50); //kenn
+                        angle4.Update(body.Joints[_start4], body.Joints[_center4], body.Joints[_end4], 50); //Ankle
+                        angle5.Update(body.Joints[_start5], body.Joints[_center5], body.Joints[_end5], 50); //hip
 
                         
-                        if (value.Equals("Hip extension"))
+                        if (value=="Hip extension")
                         {
                             namebody.Text = value;
-                            anglebody.Text = "NaN";
+                            anglebody.Text = ((int)angle3.Angle -90).ToString();
 
-                        }else if (value.Equals("Hip flexion"))
+                        }else if (value=="Hip flexion")
                         {
+                            
                             namebody.Text = value;
-                            anglebody.Text = ((int)angle3.Angle).ToString();
+                            anglebody.Text = ( -1 * ((int)angle3.Angle)).ToString();
                         }
-                        else if (value.Equals("Kenn extension"))
+                        else if (value == "Kenn extension")
                         {
-                            namebody.Text = value;
-                            if((int)angle3.Angle < 181)
-                            {
-                                anglebody.Text = ((int)angle3.Angle - 180).ToString();
-                            }
+                           namebody.Text = value;
+                          
+                           anglebody.Text = ((int)angle3.Angle -140).ToString();
+                            
                             
                         }
-                        else if (value.Equals("Kenn flexion"))
+                        else if (value == "Kenn flexion")
                         {
                             namebody.Text = value;
                             anglebody.Text = ((int)angle3.Angle - 180).ToString();
                         }
-                        else if (value.Equals("Shoulder flexion"))
+                        else if (value == "Shoulder flexion")
                         {
                             namebody.Text = value;
-                            anglebody.Text = ((int)angle2.Angle).ToString();
+                            anglebody.Text = ((int)angle2.Angle -240).ToString();
                         }
-                        else if (value.Equals("Elbow flexion"))
+                        else if (value == "Elbow flexion")
                         {
                             namebody.Text = value;
-                            anglebody.Text = ((int)angle1.Angle).ToString();
+                            anglebody.Text =  ( -1 *((int)angle1.Angle - 180)).ToString();
                         }
-                        else if (value.Equals("Elbow extension"))
+                        else if (value== "Elbow extension")
                         {
                             namebody.Text = value;
-                            if((int) angle1.Angle > 180){
-                                anglebody.Text = ((int)angle1.Angle - 180).ToString();
-                            }
+                            
+                            anglebody.Text = ((int)angle1.Angle - 180).ToString();
+                            
                             
                         }
                     }
