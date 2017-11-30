@@ -101,7 +101,9 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Resources\LightBuzz.Vitruvius.dll" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\eblowexten.JPG" />
     <Resource Include="Resources\eblowflex.JPG" />
