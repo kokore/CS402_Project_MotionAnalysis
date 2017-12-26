@@ -30,9 +30,9 @@
 
 
 
-        <Image x:Name="rompic" HorizontalAlignment="Left" Height="204" Margin="649,0,0,0"  VerticalAlignment="Top" Width="233" RenderTransformOrigin="1.315,0.676" Grid.RowSpan="2"  />
+        <Image x:Name="rompic" HorizontalAlignment="Left" Height="111" Margin="701,10,0,0"  VerticalAlignment="Top" Width="140" RenderTransformOrigin="1.315,0.676" Grid.Row="1"  />
         <ComboBox  HorizontalAlignment="Left" Margin="107,10,0,0" VerticalAlignment="Top" Width="120" Loaded="combo_Loaded" SelectionChanged="ComboBox_SelectionChanged"/>
-        <TextBlock x:Name="namebody" FontSize="15" HorizontalAlignment="Left" Height="20" Margin="318,10,0,0" TextWrapping="Wrap" Text="e" VerticalAlignment="Top" Width="95"/>
-        <TextBlock x:Name="anglebody" FontSize="15" HorizontalAlignment="Left" Height="20" Margin="418,10,0,0" TextWrapping="Wrap" Text="e1" VerticalAlignment="Top" Width="96"/>
+        <TextBlock x:Name="namebody" FontSize="15" HorizontalAlignment="Left" Height="20" Margin="318,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="95"/>
+        <TextBlock x:Name="anglebody" FontSize="15" HorizontalAlignment="Left" Height="20" Margin="418,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="96"/>
     </Grid>
 </Window>

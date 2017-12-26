@@ -215,31 +215,31 @@ namespace WpfApp1
                         if (value=="Hip extension")
                         {
                             namebody.Text = value;
-                            anglebody.Text = ((int)angle3.Angle -90).ToString();
+                            anglebody.Text = ( ((int)angle3.Angle -180)).ToString();
 
                         }else if (value=="Hip flexion")
                         {
                             
                             namebody.Text = value;
-                            anglebody.Text = ( -1 * ((int)angle3.Angle)).ToString();
+                            anglebody.Text = ( -1*((int)angle3.Angle -180)).ToString();
                         }
                         else if (value == "Kenn extension")
                         {
                            namebody.Text = value;
                           
-                           anglebody.Text = ((int)angle3.Angle -140).ToString();
+                           anglebody.Text = ((int)angle3.Angle -180).ToString();
                             
                             
                         }
                         else if (value == "Kenn flexion")
                         {
                             namebody.Text = value;
-                            anglebody.Text = ((int)angle3.Angle - 180).ToString();
+                            anglebody.Text = (-1*((int)angle3.Angle - 180)).ToString();
                         }
                         else if (value == "Shoulder flexion")
                         {
                             namebody.Text = value;
-                            anglebody.Text = ((int)angle2.Angle -240).ToString();
+                            anglebody.Text = ( -1*((int)angle2.Angle -240)).ToString();
                         }
                         else if (value == "Elbow flexion")
                         {
