@@ -6,33 +6,24 @@
         xmlns:local="clr-namespace:WpfApp1"
         xmlns:controls="clr-namespace:LightBuzz.Vitruvius.Controls;assembly=LightBuzz.Vitruvius"
         mc:Ignorable="d"
-        Title="MainWindow" d:DesignHeight="700" d:DesignWidth="900"
-        Unloaded="Page_Unloaded">
+        Title="MotionAnalysis"
+        Height="950" Width="1400"
+        WindowState="Maximized"
+        WindowStartupLocation="CenterScreen"
+        Loaded="Window_Loaded">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="60"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-
-
-        <Grid Grid.Row="1">
-            <controls:KinectViewer x:Name="viewer" />
-            <Viewbox>
-                <Canvas Width="1920" Height="1080">
-                    <controls:KinectAngle x:Name="angle1" Opacity="0.5" Fill="Green" />
-                    <controls:KinectAngle x:Name="angle2" Opacity="0.5" Fill="Blue" />
-                    <controls:KinectAngle x:Name="angle3" Opacity="0.5" Fill="Red" />
-                    <controls:KinectAngle x:Name="angle4" Opacity="0.5" Fill="Yellow" />
-                    <controls:KinectAngle x:Name="angle5" Opacity="0.5" Fill="Purple" />
-                </Canvas>
-            </Viewbox>
-        </Grid>
-
-
-
-        <Image x:Name="rompic" HorizontalAlignment="Left" Height="111" Margin="701,10,0,0"  VerticalAlignment="Top" Width="140" RenderTransformOrigin="1.315,0.676" Grid.Row="1"  />
-        <ComboBox  HorizontalAlignment="Left" Margin="107,10,0,0" VerticalAlignment="Top" Width="120" Loaded="combo_Loaded" SelectionChanged="ComboBox_SelectionChanged"/>
-        <TextBlock x:Name="namebody" FontSize="15" HorizontalAlignment="Left" Height="20" Margin="318,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="95"/>
-        <TextBlock x:Name="anglebody" FontSize="15" HorizontalAlignment="Left" Height="20" Margin="418,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="96"/>
+      <Grid.Background>
+        <ImageBrush ImageSource="/Resources/one_tree.jpg" />
+      </Grid.Background>
+      <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="40" />
+       </Grid.RowDefinitions>
+      
+       <Frame Grid.Row="0" Name="frame" NavigationUIVisibility="Hidden" />
+      
+       <Grid Grid.Row="1">
+           <Button Style="{StaticResource ButtonTileStyle}" Padding="0" FontSize="12" FontWeight="Normal" Content="Get SourceCode ›" Click="Github_Click" />
+       </Grid>
     </Grid>
 </Window>

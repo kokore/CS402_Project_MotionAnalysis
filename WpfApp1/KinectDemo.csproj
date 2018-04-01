@@ -58,6 +58,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="sele.xaml.cs">
+      <DependentUpon>sele.xaml</DependentUpon>
+    </Compile>
+    <Page Include="auto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -66,10 +77,20 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="auto.xaml.cs">
+      <DependentUpon>auto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="sele.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -103,15 +124,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\LightBuzz.Vitruvius.dll" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\eblowexten.JPG" />
-    <Resource Include="Resources\eblowflex.JPG" />
-    <Resource Include="Resources\hipexten.JPG" />
-    <Resource Include="Resources\hipflex.JPG" />
-    <Resource Include="Resources\kennexten.JPG" />
-    <Resource Include="Resources\kennflex.JPG" />
-    <Resource Include="Resources\shoulderflex.JPG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
