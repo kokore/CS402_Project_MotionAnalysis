@@ -14,6 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Kinect;
 using LightBuzz.Vitruvius;
+
+
 namespace WpfApp1
 {
     /// <summary>
@@ -25,36 +27,57 @@ namespace WpfApp1
         MultiSourceFrameReader reader;
         PlayersController player;
 
-        JointType _start1 = JointType.ShoulderRight;
-        JointType _center1 = JointType.ElbowRight; //Elbow
-        JointType _end1 = JointType.WristRight;
+        JointType st1 = JointType.ShoulderRight;
+        JointType ce1 = JointType.ElbowRight;   //Elbow right
+        JointType en1 = JointType.WristRight;
 
-        JointType _start2 = JointType.ElbowLeft;
-        JointType _center2 = JointType.ShoulderLeft; //shoulder
-        JointType _end2 = JointType.SpineShoulder;
+        JointType st2 = JointType.ElbowRight;
+        JointType ce2 = JointType.ShoulderRight; //Shoulder right
+        JointType en2 = JointType.SpineShoulder;
 
-        JointType _start3 = JointType.AnkleRight;
-        JointType _center3 = JointType.KneeRight; //Knee
-        JointType _end3 = JointType.HipRight;
+        JointType st3 = JointType.AnkleRight;
+        JointType ce3 = JointType.KneeRight; //Kenn right
+        JointType en3 = JointType.HipRight;
 
-        JointType _start4 = JointType.FootRight;
-        JointType _center4 = JointType.AnkleRight; //Ankle
-        JointType _end4 = JointType.KneeRight;
+        JointType st4 = JointType.FootRight;
+        JointType ce4 = JointType.AnkleRight; //Ankle right
+        JointType en4 = JointType.KneeRight;
 
-        JointType _start5 = JointType.KneeRight;
-        JointType _center5 = JointType.HipRight; //hip
-        JointType _end5 = JointType.AnkleRight;
+        JointType st5 = JointType.KneeRight;
+        JointType ce5 = JointType.HipRight;     //Hip right
+        JointType en5 = JointType.AnkleRight;
+
+        JointType st6 = JointType.ShoulderLeft;
+        JointType ce6 = JointType.ElbowLeft;   //Elbow Left
+        JointType en6 = JointType.WristLeft;
+
+        JointType st7 = JointType.ElbowLeft;
+        JointType ce7 = JointType.ShoulderLeft; //Shoulder Left
+        JointType en7 = JointType.SpineShoulder;
+
+        JointType st8 = JointType.AnkleLeft;
+        JointType ce8 = JointType.KneeLeft; //Kenn Left
+        JointType en8 = JointType.HipLeft;
+
+        JointType st9 = JointType.FootLeft;
+        JointType ce9 = JointType.AnkleLeft; //Ankle Left
+        JointType en9 = JointType.KneeLeft;
+
+        JointType st10 = JointType.KneeRight;
+        JointType ce10 = JointType.HipRight;     //Hip right
+        JointType en10 = JointType.AnkleRight;
 
         string value;
+
         public sele()
         {
-            
+            InitializeComponent();
+
             sensor = KinectSensor.GetDefault();
-
-
             if (sensor != null)
             {
                 sensor.Open();
+
                 reader = sensor.OpenMultiSourceFrameReader(FrameSourceTypes.Color | FrameSourceTypes.Depth | FrameSourceTypes.Infrared | FrameSourceTypes.Body);
                 reader.MultiSourceFrameArrived += Reader_MultiSourceFrameArrived;
 
@@ -62,32 +85,16 @@ namespace WpfApp1
                 player.BodyEntered += UserReporter_BodyEntered;
                 player.BodyLeft += UserReporter_BodyLeft;
                 player.Start();
-
             }
         }
 
-        private void combo_Loaded(object sender, RoutedEventArgs e)
+        private void Back_Click(object sender, RoutedEventArgs e)
         {
-
-            List<string> data = new List<string>();
-            data.Add("Hip extension");
-            data.Add("Hip flexion");
-            data.Add("Kenn extension");
-            data.Add("Kenn flexion");
-            data.Add("Shoulder flexion");
-            data.Add("Elbow flexion");
-            data.Add("Elbow extension");
-
-
-            // ... Get the ComboBox reference.
-            var comboBox = sender as ComboBox;
-
-            // ... Assign the ItemsSource to the List.
-            comboBox.ItemsSource = data;
-
+            if (NavigationService.CanGoBack)
+            {
+                NavigationService.GoBack();
+            }
         }
-
-
 
         private void Page_Unloaded(object sender, RoutedEventArgs e)
         {
@@ -107,34 +114,7 @@ namespace WpfApp1
             }
         }
 
-
-        private void UserReporter_BodyLeft(object sender, PlayersControllerEventArgs e)
-        {
-            viewer.Clear();
-            angle1.Clear();
-            angle2.Clear();
-            angle3.Clear();
-            angle4.Clear();
-            angle5.Clear();
-        }
-
-        private void UserReporter_BodyEntered(object sender, PlayersControllerEventArgs e)
-        {
-
-        }
-
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            // ... Get the ComboBox.
-            var comboBox = sender as ComboBox;
-
-            // ... Set SelectedItem as Window Title.
-            value = comboBox.SelectedItem as string;
-            
-            
-        }
-
-        public void Reader_MultiSourceFrameArrived(object sender, MultiSourceFrameArrivedEventArgs e)
+        void Reader_MultiSourceFrameArrived(object sender, MultiSourceFrameArrivedEventArgs e)
         {
             var reference = e.FrameReference.AcquireFrame();
 
@@ -165,63 +145,117 @@ namespace WpfApp1
                     {
                         viewer.DrawBody(body);
 
-                        angle1.Update(body.Joints[_start1], body.Joints[_center1], body.Joints[_end1], 50); //eblow
-                        angle2.Update(body.Joints[_start2], body.Joints[_center2], body.Joints[_end2], 50); //shoulder
-                        angle3.Update(body.Joints[_start3], body.Joints[_center3], body.Joints[_end3], 50); //kenn
-                        angle4.Update(body.Joints[_start4], body.Joints[_center4], body.Joints[_end4], 50); //Ankle
-                        angle5.Update(body.Joints[_start5], body.Joints[_center5], body.Joints[_end5], 50); //hip
+                        angle1.Update(body.Joints[st1], body.Joints[ce1], body.Joints[en1], 50); //elbow
+                        angle2.Update(body.Joints[st2], body.Joints[ce2], body.Joints[en2], 50); //shoulder
+                        angle3.Update(body.Joints[st3], body.Joints[ce3], body.Joints[en3], 50); //knee
+                        angle4.Update(body.Joints[st4], body.Joints[ce4], body.Joints[en4], 50);  //ankle
+                        angle5.Update(body.Joints[st5], body.Joints[ce5], body.Joints[en5], 50); //hip
 
+                        angle6.Update(body.Joints[st6], body.Joints[ce6], body.Joints[en6], 50); //elbow
+                        angle7.Update(body.Joints[st7], body.Joints[ce7], body.Joints[en7], 50); //shoulder
+                        angle8.Update(body.Joints[st8], body.Joints[ce8], body.Joints[en8], 50); //kenn
+                        angle9.Update(body.Joints[st9], body.Joints[ce9], body.Joints[en9], 50); //ankle
+                        angle10.Update(body.Joints[st10], body.Joints[ce10], body.Joints[en10], 50); //hip
 
-                        if (value == "Hip extension")
+                        if(rb1.IsChecked==true)
                         {
-                            namebody.Text = value;
-                            anglebody.Text = (((int)angle3.Angle - 180)).ToString();
-
-                        }
-                        else if (value == "Hip flexion")
+                            if (value == "Hip extension")
+                            {
+                                Angle.Text = (((int)angle5.Angle )).ToString();
+                            }
+                            else if (value == "Hip flexion")
+                            {
+                                Angle.Text = (-1 * ((int)angle5.Angle )).ToString();
+                            }
+                            else if (value == "Kenn flexion")
+                            {
+                                Angle.Text = (-1 * ((int)angle3.Angle )).ToString();
+                            }
+                            else if (value == "Shoulder flexion")
+                            {
+                                Angle.Text = (-1 * ((int)angle2.Angle )).ToString();
+                            }
+                            else if (value == "Elbow flexion")
+                            {
+                                Angle.Text = (-1 * ((int)angle1.Angle )).ToString();
+                            }
+                        }else if (rb2.IsChecked == true)
                         {
-
-                            namebody.Text = value;
-                            anglebody.Text = (-1 * ((int)angle3.Angle - 180)).ToString();
+                            if (value == "Hip extension")
+                            {
+                                Angle.Text = (((int)angle10.Angle)).ToString();
+                            }
+                            else if (value == "Hip flexion")
+                            {
+                                Angle.Text = (-1 * ((int)angle10.Angle)).ToString();
+                            }
+                            else if (value == "Kenn flexion")
+                            {
+                                Angle.Text = (-1 * ((int)angle8.Angle)).ToString();
+                            }
+                            else if (value == "Shoulder flexion")
+                            {
+                                Angle.Text = (-1 * ((int)angle7.Angle)).ToString();
+                            }
+                            else if (value == "Elbow flexion")
+                            {
+                                Angle.Text = (-1 * ((int)angle6.Angle)).ToString();
+                            }
                         }
-                        else if (value == "Kenn extension")
-                        {
-                            namebody.Text = value;
 
-                            anglebody.Text = ((int)angle3.Angle - 180).ToString();
-
-
-                        }
-                        else if (value == "Kenn flexion")
-                        {
-                            namebody.Text = value;
-                            anglebody.Text = (-1 * ((int)angle3.Angle - 180)).ToString();
-                        }
-                        else if (value == "Shoulder flexion")
-                        {
-                            namebody.Text = value;
-                            anglebody.Text = (-1 * ((int)angle2.Angle - 240)).ToString();
-                        }
-                        else if (value == "Elbow flexion")
-                        {
-                            namebody.Text = value;
-                            anglebody.Text = (-1 * ((int)angle1.Angle - 180)).ToString();
-                        }
-                        else if (value == "Elbow extension")
-                        {
-                            namebody.Text = value;
-
-                            anglebody.Text = ((int)angle1.Angle - 180).ToString();
-
-
-                        }
                     }
                 }
             }
         }
 
+        void UserReporter_BodyEntered(object sender, PlayersControllerEventArgs e)
+        {
+        }
+
+        void UserReporter_BodyLeft(object sender, PlayersControllerEventArgs e)
+        {
+            viewer.Clear();
+            angle1.Clear();
+            angle2.Clear();
+            angle3.Clear();
+            angle4.Clear();
+            angle5.Clear();
+
+            angle6.Clear();
+            angle7.Clear();
+            angle8.Clear();
+            angle9.Clear();
+            angle10.Clear();
+            Angle.Text = "-";
+        }
+
+        private void combo_Loaded(object sender, RoutedEventArgs e)
+        {
+
+            List<string> data = new List<string>();
+            data.Add("Hip extension");
+            data.Add("Hip flexion");
+            data.Add("Kenn flexion");
+            data.Add("Shoulder flexion");
+            data.Add("Elbow flexion");
 
 
+            // ... Get the ComboBox reference.
+            var comboBox = sender as ComboBox;
+
+            // ... Assign the ItemsSource to the List.
+            comboBox.ItemsSource = data;
+
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // ... Get the ComboBox.
+            var comboBox = sender as ComboBox;
+
+            // ... Set SelectedItem as Window Title.
+            value = comboBox.SelectedItem as string;
+
+        }
     }
-
 }

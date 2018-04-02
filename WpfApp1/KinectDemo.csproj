@@ -123,7 +123,10 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\16-logo-300x225.jpg" />
+    <Resource Include="Resources\554568a6-fed7-49dc-9e88-f7614f106fc1.png" />
     <Content Include="Resources\LightBuzz.Vitruvius.dll" />
+    <Resource Include="Resources\one_tree.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -3,17 +3,58 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WpfApp1"
         xmlns:controls="clr-namespace:LightBuzz.Vitruvius.Controls;assembly=LightBuzz.Vitruvius"
         mc:Ignorable="d"
-        Title="Seletion" d:DesignHeight="700" d:DesignWidth="900"
-        Unloaded="Page_Unloaded">
+        Title="Seletion" 
+        d:DesignHeight="700" d:DesignWidth="900"
+        >
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
+        <!-- Back button and page title -->
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="backButton" Click="Back_Click"
+                    Style="{StaticResource NavigationBackButtonNormalStyle}"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"/>
+            <TextBlock x:Name="pageTitle" Text="Back" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1" 
+                       IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Center" />
+            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">
+
+                <Border Width="80">
+                    <Border.Background>
+                        <SolidColorBrush Color="White" Opacity="0.7" />
+                    </Border.Background>
+                    <StackPanel  HorizontalAlignment="Center" Margin="15">
+                        <RadioButton Name="rb1" IsChecked="True">Left</RadioButton>
+                        <RadioButton Name="rb2" >Right</RadioButton>
+                    </StackPanel>
+                </Border>
+
+                <Border Width="120">
+                    <Border.Background>
+                        <SolidColorBrush Color="DarkGray" Opacity="0.7" />
+                    </Border.Background>
+                    <ComboBox HorizontalAlignment="Center" VerticalAlignment="Center" Width="120" Loaded="combo_Loaded" SelectionChanged="ComboBox_SelectionChanged" />
+                </Border>
+
+                <Border Width="80">
+                    <Border.Background>
+                        <SolidColorBrush Color="Black" Opacity="0.7" />
+                    </Border.Background>
+                    <TextBlock Style="{StaticResource HeaderTextBlockStyle}" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Run x:Name="Angle" Text="-" />°
+                    </TextBlock>
+                </Border>
+            </StackPanel>
+        </Grid>
 
         <Grid Grid.Row="1">
             <controls:KinectViewer x:Name="viewer" />
@@ -24,13 +65,14 @@
                     <controls:KinectAngle x:Name="angle3" Opacity="0.5" Fill="Red" />
                     <controls:KinectAngle x:Name="angle4" Opacity="0.5" Fill="Yellow" />
                     <controls:KinectAngle x:Name="angle5" Opacity="0.5" Fill="Purple" />
+                    
+                    <controls:KinectAngle x:Name="angle6" Opacity="0.5" Fill="Green" />
+                    <controls:KinectAngle x:Name="angle7" Opacity="0.5" Fill="Blue" />
+                    <controls:KinectAngle x:Name="angle8" Opacity="0.5" Fill="Red" />
+                    <controls:KinectAngle x:Name="angle9" Opacity="0.5" Fill="Yellow" />
+                    <controls:KinectAngle x:Name="angle10" Opacity="0.5" Fill="Purple" />
                 </Canvas>
             </Viewbox>
         </Grid>
-
-
-        <ComboBox  HorizontalAlignment="Left" Margin="107,10,0,0" VerticalAlignment="Top" Width="120" Loaded="combo_Loaded" SelectionChanged="ComboBox_SelectionChanged"/>
-        <TextBlock x:Name="namebody" FontSize="15" HorizontalAlignment="Left" Height="20" Margin="318,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="95"/>
-        <TextBlock x:Name="anglebody" FontSize="15" HorizontalAlignment="Left" Height="20" Margin="418,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="96"/>
     </Grid>
 </Page>
