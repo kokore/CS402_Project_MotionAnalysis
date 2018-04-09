@@ -161,19 +161,19 @@ namespace WpfApp1
                         {
                             if (value == "Hip extension")
                             {
-                                Angle.Text = (((int)angle5.Angle )).ToString();
+                                Angle.Text = (((int)angle5.Angle -180)).ToString();
                             }
                             else if (value == "Hip flexion")
                             {
-                                Angle.Text = (-1 * ((int)angle5.Angle )).ToString();
+                                Angle.Text = (-1 * ((int)angle5.Angle -180)).ToString();
                             }
                             else if (value == "Kenn flexion")
                             {
-                                Angle.Text = (-1 * ((int)angle3.Angle )).ToString();
+                                Angle.Text = (-1 * ((int)angle3.Angle -180)).ToString();
                             }
                             else if (value == "Shoulder flexion")
                             {
-                                Angle.Text = (-1 * ((int)angle2.Angle )).ToString();
+                                Angle.Text = (-1 * ((int)angle2.Angle -240)).ToString();
                             }
                             else if (value == "Elbow flexion")
                             {
@@ -183,19 +183,19 @@ namespace WpfApp1
                         {
                             if (value == "Hip extension")
                             {
-                                Angle.Text = (((int)angle10.Angle)).ToString();
+                                Angle.Text = (((int)angle10.Angle -180)).ToString();
                             }
                             else if (value == "Hip flexion")
                             {
-                                Angle.Text = (-1 * ((int)angle10.Angle)).ToString();
+                                Angle.Text = (-1 * ((int)angle10.Angle -180)).ToString();
                             }
                             else if (value == "Kenn flexion")
                             {
-                                Angle.Text = (-1 * ((int)angle8.Angle)).ToString();
+                                Angle.Text = (-1 * ((int)angle8.Angle -180)).ToString();
                             }
                             else if (value == "Shoulder flexion")
                             {
-                                Angle.Text = (-1 * ((int)angle7.Angle)).ToString();
+                                Angle.Text = (-1 * ((int)angle7.Angle -240)).ToString();
                             }
                             else if (value == "Elbow flexion")
                             {
@@ -257,5 +257,6 @@ namespace WpfApp1
             value = comboBox.SelectedItem as string;
 
         }
+
     }
 }
