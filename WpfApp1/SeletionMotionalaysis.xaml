@@ -63,14 +63,12 @@
                     <controls:KinectAngle x:Name="angle1" Opacity="0.5" Fill="Green" />
                     <controls:KinectAngle x:Name="angle2" Opacity="0.5" Fill="Blue" />
                     <controls:KinectAngle x:Name="angle3" Opacity="0.5" Fill="Red" />
-                    <controls:KinectAngle x:Name="angle4" Opacity="0.5" Fill="Yellow" />
-                    <controls:KinectAngle x:Name="angle5" Opacity="0.5" Fill="Purple" />
+                    <controls:KinectAngle x:Name="angle4" Opacity="0.5" Fill="Purple" />
                     
-                    <controls:KinectAngle x:Name="angle6" Opacity="0.5" Fill="Green" />
-                    <controls:KinectAngle x:Name="angle7" Opacity="0.5" Fill="Blue" />
-                    <controls:KinectAngle x:Name="angle8" Opacity="0.5" Fill="Red" />
-                    <controls:KinectAngle x:Name="angle9" Opacity="0.5" Fill="Yellow" />
-                    <controls:KinectAngle x:Name="angle10" Opacity="0.5" Fill="Purple" />
+                    <controls:KinectAngle x:Name="angle5" Opacity="0.5" Fill="Green" />
+                    <controls:KinectAngle x:Name="angle6" Opacity="0.5" Fill="Blue" />
+                    <controls:KinectAngle x:Name="angle7" Opacity="0.5" Fill="Red" />
+                    <controls:KinectAngle x:Name="angle8" Opacity="0.5" Fill="Purple" />
                 </Canvas>
             </Viewbox>
         </Grid>

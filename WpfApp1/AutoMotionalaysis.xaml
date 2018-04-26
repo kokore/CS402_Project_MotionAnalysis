@@ -7,12 +7,14 @@
       xmlns:controls="clr-namespace:LightBuzz.Vitruvius.Controls;assembly=LightBuzz.Vitruvius"
       mc:Ignorable="d" 
       d:DesignHeight="700" d:DesignWidth="900"
-      Title="auto">
+      Title="auto"
+      >
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
 
         <!-- Back button and page title -->
@@ -28,28 +30,37 @@
             <TextBlock x:Name="pageTitle" Text="Angles" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1" 
                        IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Center" />
             <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">
+
+
+                <Border Width="350">
+                    <Border.Background>
+                        <SolidColorBrush Color="Gray" Opacity="0.7" />
+                    </Border.Background>
+                    <StackPanel  HorizontalAlignment="Center" Margin="15">
+                        <TextBlock FontSize="25" Style="{StaticResource HeaderTextBlockStyle}" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Run x:Name="move" Text="-" />
+                        </TextBlock>
+                    </StackPanel>
+                </Border>
+                
+                <Border Width="300">
+                    <Border.Background>
+                        <SolidColorBrush Color="DarkGray" Opacity="0.7" />
+                    </Border.Background>
+                    <StackPanel  HorizontalAlignment="Center" Margin="12">
+                        <TextBlock Style="{StaticResource HeaderTextBlockStyle}" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            Time left: <Run x:Name="time" Text="-" /> seconds
+                        </TextBlock>
+                    </StackPanel>
+                </Border>
+                
+                
                 <Border Width="80">
                     <Border.Background>
-                        <SolidColorBrush Color="Green" Opacity="0.7" />
+                        <SolidColorBrush Color="Black" Opacity="0.7" />
                     </Border.Background>
                     <TextBlock Style="{StaticResource HeaderTextBlockStyle}" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <Run x:Name="tblAngle1" Text="-" />°
-                    </TextBlock>
-                </Border>
-                <Border Width="80" Margin="10,0">
-                    <Border.Background>
-                        <SolidColorBrush Color="Blue" Opacity="0.7" />
-                    </Border.Background>
-                    <TextBlock Style="{StaticResource HeaderTextBlockStyle}" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <Run x:Name="tblAngle2" Text="-" />°
-                    </TextBlock>
-                </Border>
-                <Border Width="80">
-                    <Border.Background>
-                        <SolidColorBrush Color="Red" Opacity="0.7" />
-                    </Border.Background>
-                    <TextBlock Style="{StaticResource HeaderTextBlockStyle}" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <Run x:Name="tblAngle3" Text="-" />°
+                        <Run x:Name="Angle" Text="-" />°
                     </TextBlock>
                 </Border>
             </StackPanel>
@@ -62,8 +73,18 @@
                     <controls:KinectAngle x:Name="angle1" Opacity="0.5" Fill="Green" />
                     <controls:KinectAngle x:Name="angle2" Opacity="0.5" Fill="Blue" />
                     <controls:KinectAngle x:Name="angle3" Opacity="0.5" Fill="Red" />
+                    <controls:KinectAngle x:Name="angle4" Opacity="0.5" Fill="Purple" />
+
+                    <controls:KinectAngle x:Name="angle5" Opacity="0.5" Fill="Green" />
+                    <controls:KinectAngle x:Name="angle6" Opacity="0.5" Fill="Blue" />
+                    <controls:KinectAngle x:Name="angle7" Opacity="0.5" Fill="Red" />
+                    <controls:KinectAngle x:Name="angle8" Opacity="0.5" Fill="Purple" />
                 </Canvas>
             </Viewbox>
+        </Grid>
+
+        <Grid Grid.Row="3">
+            <Button Style="{StaticResource ButtonTileStyle}" Padding="0" FontSize="12" FontWeight="Normal" Content="Start " Click="Start_Click" />
         </Grid>
     </Grid>
 </Page>

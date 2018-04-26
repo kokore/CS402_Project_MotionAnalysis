@@ -39,33 +39,25 @@ namespace WpfApp1
         JointType ce3 = JointType.KneeRight; //Kenn right
         JointType en3 = JointType.HipRight;
 
-        JointType st4 = JointType.FootRight;
-        JointType ce4 = JointType.AnkleRight; //Ankle right
-        JointType en4 = JointType.KneeRight;
+        JointType st4 = JointType.KneeRight;
+        JointType ce4 = JointType.HipRight;     //Hip right
+        JointType en4 = JointType.AnkleRight;
 
-        JointType st5 = JointType.KneeRight;
-        JointType ce5 = JointType.HipRight;     //Hip right
-        JointType en5 = JointType.AnkleRight;
+        JointType st5 = JointType.ShoulderLeft;
+        JointType ce5 = JointType.ElbowLeft;   //Elbow Left
+        JointType en5 = JointType.WristLeft;
 
-        JointType st6 = JointType.ShoulderLeft;
-        JointType ce6 = JointType.ElbowLeft;   //Elbow Left
-        JointType en6 = JointType.WristLeft;
+        JointType st6 = JointType.ElbowLeft;
+        JointType ce6 = JointType.ShoulderLeft; //Shoulder Left
+        JointType en6 = JointType.SpineShoulder;
 
-        JointType st7 = JointType.ElbowLeft;
-        JointType ce7 = JointType.ShoulderLeft; //Shoulder Left
-        JointType en7 = JointType.SpineShoulder;
+        JointType st7 = JointType.AnkleLeft;
+        JointType ce7 = JointType.KneeLeft; //Kenn Left
+        JointType en7 = JointType.HipLeft;
 
-        JointType st8 = JointType.AnkleLeft;
-        JointType ce8 = JointType.KneeLeft; //Kenn Left
-        JointType en8 = JointType.HipLeft;
-
-        JointType st9 = JointType.FootLeft;
-        JointType ce9 = JointType.AnkleLeft; //Ankle Left
-        JointType en9 = JointType.KneeLeft;
-
-        JointType st10 = JointType.KneeRight;
-        JointType ce10 = JointType.HipRight;     //Hip right
-        JointType en10 = JointType.AnkleRight;
+        JointType st8 = JointType.KneeLeft;
+        JointType ce8 = JointType.HipLeft;     //Hip Left
+        JointType en8 = JointType.AnkleLeft;
 
         string value;
 
@@ -82,8 +74,6 @@ namespace WpfApp1
                 reader.MultiSourceFrameArrived += Reader_MultiSourceFrameArrived;
 
                 player = new PlayersController();
-                player.BodyEntered += UserReporter_BodyEntered;
-                player.BodyLeft += UserReporter_BodyLeft;
                 player.Start();
             }
         }
@@ -114,6 +104,7 @@ namespace WpfApp1
             }
         }
 
+
         void Reader_MultiSourceFrameArrived(object sender, MultiSourceFrameArrivedEventArgs e)
         {
             var reference = e.FrameReference.AcquireFrame();
@@ -143,63 +134,82 @@ namespace WpfApp1
 
                     if (body != null)
                     {
-                        viewer.DrawBody(body);
-
-                        angle1.Update(body.Joints[st1], body.Joints[ce1], body.Joints[en1], 50); //elbow
-                        angle2.Update(body.Joints[st2], body.Joints[ce2], body.Joints[en2], 50); //shoulder
-                        angle3.Update(body.Joints[st3], body.Joints[ce3], body.Joints[en3], 50); //knee
-                        angle4.Update(body.Joints[st4], body.Joints[ce4], body.Joints[en4], 50);  //ankle
-                        angle5.Update(body.Joints[st5], body.Joints[ce5], body.Joints[en5], 50); //hip
-
-                        angle6.Update(body.Joints[st6], body.Joints[ce6], body.Joints[en6], 50); //elbow
-                        angle7.Update(body.Joints[st7], body.Joints[ce7], body.Joints[en7], 50); //shoulder
-                        angle8.Update(body.Joints[st8], body.Joints[ce8], body.Joints[en8], 50); //kenn
-                        angle9.Update(body.Joints[st9], body.Joints[ce9], body.Joints[en9], 50); //ankle
-                        angle10.Update(body.Joints[st10], body.Joints[ce10], body.Joints[en10], 50); //hip
+                        //angle4.Update(body.Joints[st4], body.Joints[ce4], body.Joints[en4], 50);  //ankle
+                        //angle9.Update(body.Joints[st9], body.Joints[ce9], body.Joints[en9], 50); //ankle
 
                         if(rb1.IsChecked==true)
                         {
                             if (value == "Hip extension")
                             {
-                                Angle.Text = (((int)angle5.Angle -180)).ToString();
+                                viewer.Clear();
+                                viewer.DrawBody(body);
+                                angle4.Update(body.Joints[st4], body.Joints[ce4], body.Joints[en4], 50); //hip
+                                Angle.Text = (-1 *((int)angle4.Angle -360)).ToString();
                             }
                             else if (value == "Hip flexion")
                             {
-                                Angle.Text = (-1 * ((int)angle5.Angle -180)).ToString();
+                                viewer.Clear();
+                                viewer.DrawBody(body);
+                                angle4.Update(body.Joints[st4], body.Joints[ce4], body.Joints[en4], 50); //hip
+                                Angle.Text = ((- 1*  ((int)angle4.Angle -360))+40).ToString();
                             }
                             else if (value == "Kenn flexion")
                             {
-                                Angle.Text = (-1 * ((int)angle3.Angle -180)).ToString();
+                                viewer.Clear();
+                                viewer.DrawBody(body);
+                                angle3.Update(body.Joints[st3], body.Joints[ce3], body.Joints[en3], 50); //knee
+                                Angle.Text = ( ((int)angle3.Angle -180)).ToString();
                             }
                             else if (value == "Shoulder flexion")
                             {
-                                Angle.Text = (-1 * ((int)angle2.Angle -240)).ToString();
+                                viewer.Clear();
+                                viewer.DrawBody(body);
+                                angle2.Update(body.Joints[st2], body.Joints[ce2], body.Joints[en2], 50); //shoulder
+                                Angle.Text = ( ((int)angle2.Angle -120)).ToString();
                             }
                             else if (value == "Elbow flexion")
                             {
-                                Angle.Text = (-1 * ((int)angle1.Angle )).ToString();
+                                viewer.Clear();
+                                viewer.DrawBody(body);
+                                angle1.Update(body.Joints[st1], body.Joints[ce1], body.Joints[en1], 50); //elbow
+                                Angle.Text = (-1 * ((int)angle1.Angle -180 )).ToString();
                             }
                         }else if (rb2.IsChecked == true)
                         {
                             if (value == "Hip extension")
                             {
-                                Angle.Text = (((int)angle10.Angle -180)).ToString();
+                                viewer.Clear();
+                                viewer.DrawBody(body);
+                                angle8.Update(body.Joints[st8], body.Joints[ce8], body.Joints[en8], 50); //hip
+                                Angle.Text = (-1*((int)angle8.Angle -360)).ToString();
                             }
                             else if (value == "Hip flexion")
                             {
-                                Angle.Text = (-1 * ((int)angle10.Angle -180)).ToString();
+                                viewer.Clear();
+                                viewer.DrawBody(body);
+                                angle8.Update(body.Joints[st8], body.Joints[ce8], body.Joints[en8], 50); //hip
+                                Angle.Text = ((-1 * ((int)angle8.Angle - 360))+40).ToString();
                             }
                             else if (value == "Kenn flexion")
                             {
-                                Angle.Text = (-1 * ((int)angle8.Angle -180)).ToString();
+                                viewer.Clear();
+                                viewer.DrawBody(body);
+                                angle7.Update(body.Joints[st7], body.Joints[ce7], body.Joints[en7], 50); //kenn
+                                Angle.Text = ( ((int)angle8.Angle -180)).ToString();
                             }
                             else if (value == "Shoulder flexion")
                             {
-                                Angle.Text = (-1 * ((int)angle7.Angle -240)).ToString();
+                                viewer.Clear();
+                                viewer.DrawBody(body);
+                                angle6.Update(body.Joints[st6], body.Joints[ce6], body.Joints[en6], 50); //shoulder
+                                Angle.Text = ( ((int)angle7.Angle -120)).ToString();
                             }
                             else if (value == "Elbow flexion")
                             {
-                                Angle.Text = (-1 * ((int)angle6.Angle)).ToString();
+                                viewer.Clear();
+                                viewer.DrawBody(body);
+                                angle5.Update(body.Joints[st5], body.Joints[ce5], body.Joints[en5], 50); //elbow
+                                Angle.Text = ( -1 * ((int)angle6.Angle -180)).ToString();
                             }
                         }
 
@@ -208,26 +218,6 @@ namespace WpfApp1
             }
         }
 
-        void UserReporter_BodyEntered(object sender, PlayersControllerEventArgs e)
-        {
-        }
-
-        void UserReporter_BodyLeft(object sender, PlayersControllerEventArgs e)
-        {
-            viewer.Clear();
-            angle1.Clear();
-            angle2.Clear();
-            angle3.Clear();
-            angle4.Clear();
-            angle5.Clear();
-
-            angle6.Clear();
-            angle7.Clear();
-            angle8.Clear();
-            angle9.Clear();
-            angle10.Clear();
-            Angle.Text = "-";
-        }
 
         private void combo_Loaded(object sender, RoutedEventArgs e)
         {
