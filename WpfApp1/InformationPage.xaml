@@ -5,51 +5,63 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WpfApp1"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="450" d:DesignWidth="940"
       Title="InformationPage">
 
     <Grid>
-        <Grid.Background>
-            <ImageBrush ImageSource="/Resources/one_tree.jpg" />
-        </Grid.Background>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="40" />
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30" />
         </Grid.RowDefinitions>
 
-        <Frame Grid.Row="0" Name="frame" NavigationUIVisibility="Hidden" />
-        <Grid  Grid.Row="1">
-            <TextBox x:Name="fn" HorizontalAlignment="Left" Height="33" TextWrapping="Wrap" Text="Jone" VerticalAlignment="Top" Width="184" Margin="188,-338,0,0" FontSize="24"/>
-            <Label Content="First Name" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="31,-338,0,0" Height="37" Width="123" FontSize="22"/>
-            <TextBox x:Name="ln" HorizontalAlignment="Left" Height="34" TextWrapping="Wrap" Text="doe" VerticalAlignment="Top" Width="184" Margin="188,-277,0,0" FontSize="22"/>
-            <Label Content="Lastname" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="31,-277,0,0" Height="37" Width="123" FontSize="22"/>
-            <TextBox x:Name="age" HorizontalAlignment="Left" Height="37" TextWrapping="Wrap" Text="Only number" VerticalAlignment="Top" Width="138" Margin="188,-212,0,0" FontSize="22"/>
-            <Label Content="Age" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="54,-212,0,0" Height="47" Width="58" FontSize="22"/>
-            <Label Content="Gender" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="43,-146,0,0" Height="37" Width="81" FontSize="22"/>
-            <Label Content="Hip flexion left" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="516,-338,0,0" Height="33" Width="121" FontSize="13"/>
-            <Label Content="-" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="653,-338,0,0" Height="33" Width="106" FontSize="13"/>
-            <Label Content="Hip flexion right" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="516,-300,0,0" Height="33" Width="121" FontSize="13"/>
-            <Label Content="-" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="653,-300,0,0" Height="33" Width="106" FontSize="13"/>
-            <Label Content="Kenn flexion left" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="516,-269,0,0" Height="33" Width="121" FontSize="13"/>
-            <Label Content="-" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="653,-269,0,0" Height="33" Width="106" FontSize="13"/>
-            <Label Content="Kenn flexion right" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="516,-231,0,0" Height="33" Width="121" FontSize="13"/>
-            <Label Content="-" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="653,-231,0,0" Height="33" Width="106" FontSize="13"/>
-            <Label Content="Shoulder flexion left" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="516,-203,0,0" Height="33" Width="121" FontSize="13"/>
-            <Label Content="-" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="653,-203,0,0" Height="33" Width="106" FontSize="13"/>
-            <Label Content="Shoulder flexion right" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="516,-165,0,0" Height="33" Width="121" FontSize="13"/>
-            <Label Content="-" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="653,-165,0,0" Height="33" Width="106" FontSize="13"/>
-            <Label Content="Elbow flexion left" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="516,-132,0,0" Height="33" Width="121" FontSize="13"/>
-            <Label Content="-" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="653,-132,0,0" Height="33" Width="106" FontSize="13"/>
-            <Label Content="Elbow flexion right" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="516,-94,0,0" Height="33" Width="121" FontSize="13"/>
-            <Label Content="-" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="653,-94,0,0" Height="33" Width="106" FontSize="13"/>
-            <Label Content="Hip extension left" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="516,-409,0,0" Height="33" Width="121" FontSize="13"/>
-            <Label Content="-" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="653,-409,0,0" Height="33" Width="106" FontSize="13"/>
-            <Label Content="Hip extension right" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="516,-371,0,0" Height="33" Width="121" FontSize="13"/>
-            <Label Content="-" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="653,-371,0,0" Height="33" Width="106" FontSize="13"/>
-
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="70"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="backButton" Click="Back_Click"
+                    Style="{StaticResource NavigationBackButtonNormalStyle}"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"/>
+            <TextBlock x:Name="pageTitle" Text="Infomation" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1" 
+                       IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Center" />
         </Grid>
-        <RadioButton Content="Male" HorizontalAlignment="Left" Margin="148,274,0,0" VerticalAlignment="Top" FontSize="22" Width="78"/>
-        <RadioButton Content="Female" HorizontalAlignment="Left" Margin="231,274,0,0" VerticalAlignment="Top" FontSize="22" Width="93"/>
-        <Button Content="Save" HorizontalAlignment="Left" Margin="355,367,0,0" VerticalAlignment="Top" Width="75" FontSize="22"/>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250" />
+                <ColumnDefinition Width="250" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+                
+            <StackPanel Grid.Column="0" Margin="0,0,0,0" Background="White">
+                <TextBlock Style="{StaticResource CodeTextBlockStyle}" Foreground="Black" Text="Firstname" TextAlignment="Center" Margin="20" />
+                <TextBlock Style="{StaticResource CodeTextBlockStyle}" Foreground="Black" Text="Lastname" TextAlignment="Center"  Margin="20"/>
+                <TextBlock Style="{StaticResource CodeTextBlockStyle}" Foreground="Black" Text="Gender" TextAlignment="Center"  Margin="20"/>
+                <TextBlock Style="{StaticResource CodeTextBlockStyle}" Foreground="Black" Text="Birthday" TextAlignment="Center"  Margin="72" />
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" Margin="0,0,0,0" Background="Gray">
+                <TextBox Style="{StaticResource TextboxStyle}" Margin="20"/>
+                <TextBox Style="{StaticResource TextboxStyle}" Margin="20"/>
+                <RadioButton Content="Male" Margin="20" FontFamily="Consolas" FontSize="20"/>
+                <RadioButton Content="Female" Margin="20" FontFamily="Consolas" FontSize="20"/>
+                <DatePicker Margin="20" FontFamily="Consolas" FontSize="20"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="2" Margin="0,0,0,0" Background="Black">
+                <TextBlock Style="{StaticResource CodeTextBlockStyle}" Margin="20,0,20,0" TextAlignment="Right" Text="Left : Right"/>
+                <TextBlock Style="{StaticResource CodeTextBlockStyle}" Margin="20,30,20,0" TextAlignment="Left" Text="Hip extension"/>
+                <TextBlock Style="{StaticResource CodeTextBlockStyle}" Margin="20,30,20,0" TextAlignment="Left" Text="Hip flexion"/>
+                <TextBlock Style="{StaticResource CodeTextBlockStyle}" Margin="20,30,20,0" TextAlignment="Left" Text="Kenn flexion"/>
+                <TextBlock Style="{StaticResource CodeTextBlockStyle}" Margin="20,30,20,0" TextAlignment="Left" Text="Shoulder flexion"/>
+                <TextBlock Style="{StaticResource CodeTextBlockStyle}" Margin="20,30,20,0" TextAlignment="Left" Text="Elbow flexion"/>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="2" >
+            <Button Style="{StaticResource ButtonTileStyle}" Padding="0" FontSize="12" FontWeight="Normal" Content="Save" Click="Save_Click" />
+        </Grid>
     </Grid>
 </Page>

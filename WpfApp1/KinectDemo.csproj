@@ -148,13 +148,6 @@
   <ItemGroup>
     <Resource Include="Resources\16-logo-300x225.jpg" />
     <Resource Include="Resources\554568a6-fed7-49dc-9e88-f7614f106fc1.png" />
-    <Content Include="dbuser.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="dbuser_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>dbuser.mdf</DependentUpon>
-    </Content>
     <Content Include="Resources\LightBuzz.Vitruvius.dll" />
     <Resource Include="Resources\one_tree.jpg" />
   </ItemGroup>

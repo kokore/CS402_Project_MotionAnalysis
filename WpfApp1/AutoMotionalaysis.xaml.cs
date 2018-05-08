@@ -140,7 +140,7 @@ namespace WpfApp1
                         
                         if(motion == 0)
                         {
-                            viewer.Clear();
+                            Clear();
                             move.Text = "Hip extension left";
                             viewer.DrawBody(body);
                             angle4.Update(body.Joints[st4], body.Joints[ce4], body.Joints[en4], 50); //hip
@@ -148,7 +148,7 @@ namespace WpfApp1
                         }
                         else if (motion == 1)
                         {
-                            viewer.Clear();
+                            Clear();
                             move.Text = "Hip flexion left";
                             viewer.DrawBody(body);
                             angle4.Update(body.Joints[st4], body.Joints[ce4], body.Joints[en4], 50); //hip
@@ -156,7 +156,7 @@ namespace WpfApp1
                         }
                         else if (motion == 2)
                         {
-                            viewer.Clear();
+                            Clear();
                             move.Text = "Kenn flexion left";
                             viewer.DrawBody(body);
                             angle3.Update(body.Joints[st3], body.Joints[ce3], body.Joints[en3], 50); //knee
@@ -172,7 +172,7 @@ namespace WpfApp1
                         }
                         else if (motion == 4)
                         {
-                            viewer.Clear();
+                            Clear();
                             move.Text = "Elbow flexion left";
                             viewer.DrawBody(body);
                             angle1.Update(body.Joints[st1], body.Joints[ce1], body.Joints[en1], 50); //elbow
@@ -180,7 +180,7 @@ namespace WpfApp1
                         }
                         else if (motion == 5)
                         {
-                            viewer.Clear();
+                            Clear();
                             move.Text = "Hip extension right";
                             viewer.DrawBody(body);
                             angle8.Update(body.Joints[st8], body.Joints[ce8], body.Joints[en8], 50); //hip
@@ -188,7 +188,7 @@ namespace WpfApp1
                         }
                         else if (motion == 6)
                         {
-                            viewer.Clear();
+                            Clear();
                             move.Text = "Hip flexion right";
                             viewer.DrawBody(body);
                             angle8.Update(body.Joints[st8], body.Joints[ce8], body.Joints[en8], 50); //hip
@@ -196,7 +196,7 @@ namespace WpfApp1
                         }
                         else if (motion == 7)
                         {
-                            viewer.Clear();
+                            Clear();
                             move.Text = "Kenn flexion right";
                             viewer.DrawBody(body);
                             angle7.Update(body.Joints[st7], body.Joints[ce7], body.Joints[en7], 50); //knee
@@ -204,7 +204,7 @@ namespace WpfApp1
                         }
                         else if (motion == 8)
                         {
-                            viewer.Clear();
+                            Clear();
                             move.Text = "Shoulder flexion right";
                             viewer.DrawBody(body);
                             angle6.Update(body.Joints[st6], body.Joints[ce6], body.Joints[en6], 50); //shoulder
@@ -212,24 +212,31 @@ namespace WpfApp1
                         }
                         else if (motion == 9)
                         {
-                            viewer.Clear();
+                            Clear();
                             move.Text = "Elbow flexion right";
                             viewer.DrawBody(body);
                             angle5.Update(body.Joints[st5], body.Joints[ce5], body.Joints[en5], 50); //elbow
                             Angle.Text = (-1 * ((int)angle5.Angle -180)).ToString();
                         }else if (motion == 10)
                         {
-                            viewer.Clear();
+                            Clear();
                             time.Text = "-";
                             move.Text = "Done";
                             timer1.Tick += new EventHandler(timer1_Stop);
-                            //NavigationService.Navigate(new InformationPage());
+                            DialogResult result1 = System.Windows.Forms.MessageBox.Show("Do you want to savve information","Save",MessageBoxButtons.YesNo);
+                            if (result1 == DialogResult.Yes)
+                            {
+                                NavigationService.Navigate(new InformationPage());
+                            }
+                            else
+                            {
+                                NavigationService.GoBack();
+                            }
                         }
                     }
                 }
             }
         }
-
 
         int t;
         private void Start_Click(object sender, RoutedEventArgs e)
@@ -238,7 +245,7 @@ namespace WpfApp1
             timer1.Interval = 1000;
             timer1.Tick += new EventHandler(timer1_Tick);
             timer1.Enabled = true;
-            t = 11;
+            t =6;
 
     }
 
@@ -260,5 +267,17 @@ namespace WpfApp1
             timer1.Stop();
         }
 
+        private void Clear()
+        {
+            viewer.Clear();
+            angle1.Clear();
+            angle2.Clear();
+            angle3.Clear();
+            angle4.Clear();
+            angle5.Clear();
+            angle6.Clear();
+            angle7.Clear();
+            angle8.Clear();
+        }
     }
 }
