@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WpfApp1"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="940"
+      d:DesignHeight="450" d:DesignWidth="1000"
       Title="InformationPage">
 
     <Grid>
@@ -28,7 +28,7 @@
                        IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Center" />
         </Grid>
 
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="1" VerticalAlignment="Center">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="250" />
                 <ColumnDefinition Width="250" />
@@ -51,12 +51,42 @@
             </StackPanel>
 
             <StackPanel Grid.Column="2" Margin="0,0,0,0" Background="Black">
-                <TextBlock Style="{StaticResource CodeTextBlockStyle}" Margin="20,0,20,0" TextAlignment="Right" Text="Left : Right"/>
-                <TextBlock Style="{StaticResource CodeTextBlockStyle}" Margin="20,30,20,0" TextAlignment="Left" Text="Hip extension"/>
-                <TextBlock Style="{StaticResource CodeTextBlockStyle}" Margin="20,30,20,0" TextAlignment="Left" Text="Hip flexion"/>
-                <TextBlock Style="{StaticResource CodeTextBlockStyle}" Margin="20,30,20,0" TextAlignment="Left" Text="Kenn flexion"/>
-                <TextBlock Style="{StaticResource CodeTextBlockStyle}" Margin="20,30,20,0" TextAlignment="Left" Text="Shoulder flexion"/>
-                <TextBlock Style="{StaticResource CodeTextBlockStyle}" Margin="20,30,20,0" TextAlignment="Left" Text="Elbow flexion"/>
+                <TextBlock Style="{StaticResource CodeTextBlockStyle}" Margin="340,0,20,0"  Text="Left : Right"/>
+                <TextBlock Style="{StaticResource CodeTextBlockStyle}" Margin="20,30,20,0" TextAlignment="Left"><Run Text="Hip extension"/><InlineUIContainer>
+                        <TextBlock TextWrapping="Wrap"  Margin="150,0,0,0" > <Run x:Name="hipextensionleft" Text="-" />° </TextBlock>
+                    </InlineUIContainer><InlineUIContainer>
+                        <TextBlock TextWrapping="Wrap"  Margin="80,0,0,0"> <Run x:Name="hipextensionright" Text="-" />° </TextBlock>
+                    </InlineUIContainer></TextBlock>
+                
+                
+                <TextBlock Style="{StaticResource CodeTextBlockStyle}" Margin="20,30,20,0" TextAlignment="Left"><Run Text="Hip flexion"/><InlineUIContainer>
+                        <TextBlock TextWrapping="Wrap"  Margin="178,0,0,0" > <Run x:Name="hipflexionleft" Text="-" />° </TextBlock>
+                    </InlineUIContainer><InlineUIContainer>
+                        <TextBlock TextWrapping="Wrap" Margin="80,0,0,0" > <Run x:Name="hipflexionright" Text="-" />° </TextBlock>
+                    </InlineUIContainer></TextBlock>
+                
+                
+                <TextBlock Style="{StaticResource CodeTextBlockStyle}" Margin="20,30,20,0" TextAlignment="Left"><Run Text="Knee flexion"/><InlineUIContainer>
+                        <TextBlock TextWrapping="Wrap"  Margin="165,0,0,0" > <Run x:Name="Kneeflexionleft" Text="-" />°  </TextBlock>
+                    </InlineUIContainer><InlineUIContainer>
+                        <TextBlock TextWrapping="Wrap"  Margin="80,0,0,0" > <Run x:Name="kneeflexionright" Text="-" />°  </TextBlock>
+                    </InlineUIContainer></TextBlock>
+                
+                
+                <TextBlock Style="{StaticResource CodeTextBlockStyle}" Margin="20,30,20,0" TextAlignment="Left"><Run Text="Shoulder flexion"/><InlineUIContainer>
+                        <TextBlock TextWrapping="Wrap" Margin="110,0,0,0" > <Run x:Name="shoulderflexionleft" Text="-" />°  </TextBlock>
+                    </InlineUIContainer><InlineUIContainer>
+                        <TextBlock TextWrapping="Wrap"  Margin="80,0,0,0" > <Run x:Name="shoulderflexionright" Text="-" />° </TextBlock>
+                    </InlineUIContainer></TextBlock>
+                
+                
+                <TextBlock Style="{StaticResource CodeTextBlockStyle}" Margin="20,30,20,0" TextAlignment="Left"><Run Text="Elbow flexion"/><InlineUIContainer>
+                        <TextBlock TextWrapping="Wrap"  Margin="150,0,0,0" > <Run x:Name="elbowflexionleft" Text="-" />°  </TextBlock>
+                    </InlineUIContainer><InlineUIContainer>
+                        <TextBlock TextWrapping="Wrap"  Margin="80,0,0,0" > <Run x:Name="elbowflexionright" Text="-" />° </TextBlock>
+                    </InlineUIContainer></TextBlock>
+                
+                
             </StackPanel>
         </Grid>
 

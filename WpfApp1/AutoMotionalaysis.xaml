@@ -37,7 +37,7 @@
                         <SolidColorBrush Color="Gray" Opacity="0.7" />
                     </Border.Background>
                     <StackPanel  HorizontalAlignment="Center" Margin="15">
-                        <TextBlock FontSize="25" Style="{StaticResource HeaderTextBlockStyle}" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock Foreground="Black" FontSize="25" Style="{StaticResource HeaderTextBlockStyle}" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <Run x:Name="move" Text="-" />
                         </TextBlock>
                     </StackPanel>
@@ -48,7 +48,7 @@
                         <SolidColorBrush Color="DarkGray" Opacity="0.7" />
                     </Border.Background>
                     <StackPanel  HorizontalAlignment="Center" Margin="12">
-                        <TextBlock Style="{StaticResource HeaderTextBlockStyle}" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock Foreground="Black" Style="{StaticResource HeaderTextBlockStyle}" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center">
                             Time left: <Run x:Name="time" Text="-" /> seconds
                         </TextBlock>
                     </StackPanel>
