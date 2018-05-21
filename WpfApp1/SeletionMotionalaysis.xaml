@@ -6,71 +6,156 @@
         xmlns:controls="clr-namespace:LightBuzz.Vitruvius.Controls;assembly=LightBuzz.Vitruvius"
         mc:Ignorable="d"
         Title="Seletion" 
-        d:DesignHeight="700" d:DesignWidth="900"
+        d:DesignHeight="700" d:DesignWidth="1500"
         >
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="60"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="500" />
+        </Grid.ColumnDefinitions>
 
-        <!-- Back button and page title -->
-        <Grid Grid.Row="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="60"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Button x:Name="backButton" Click="Back_Click"
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Back button and page title -->
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="60"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="backButton" Click="Back_Click"
                     Style="{StaticResource NavigationBackButtonNormalStyle}"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"/>
-            <TextBlock x:Name="pageTitle" Text="Back" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1" 
+                <TextBlock x:Name="pageTitle" Text="Back" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1" 
                        IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Center" />
-            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">
+                <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">
+                    <!-- 
+                    <Border Width="80">
+                        <Border.Background>
+                            <SolidColorBrush Color="White" Opacity="0.7" />
+                        </Border.Background>
+                        <StackPanel  HorizontalAlignment="Center" Margin="15">
+                            <RadioButton Name="rb1" IsChecked="True">Left</RadioButton>
+                            <RadioButton Name="rb2" >Right</RadioButton>
+                        </StackPanel>
+                    </Border>
 
-                <Border Width="80">
-                    <Border.Background>
-                        <SolidColorBrush Color="White" Opacity="0.7" />
-                    </Border.Background>
-                    <StackPanel  HorizontalAlignment="Center" Margin="15">
-                        <RadioButton Name="rb1" IsChecked="True">Left</RadioButton>
-                        <RadioButton Name="rb2" >Right</RadioButton>
-                    </StackPanel>
-                </Border>
+                    <Border Width="120">
+                        <Border.Background>
+                            <SolidColorBrush Color="DarkGray" Opacity="0.7" />
+                        </Border.Background>
+                        <ComboBox HorizontalAlignment="Center" VerticalAlignment="Center" Width="120" Loaded="combo_Loaded" SelectionChanged="ComboBox_SelectionChanged" />
+                    </Border>  -->
 
-                <Border Width="120">
-                    <Border.Background>
-                        <SolidColorBrush Color="DarkGray" Opacity="0.7" />
-                    </Border.Background>
-                    <ComboBox HorizontalAlignment="Center" VerticalAlignment="Center" Width="120" Loaded="combo_Loaded" SelectionChanged="ComboBox_SelectionChanged" />
-                </Border>
+                    <Border Width="80">
+                        <Border.Background>
+                            <SolidColorBrush Color="Black" Opacity="0.7" />
+                        </Border.Background>
+                        <TextBlock Style="{StaticResource HeaderTextBlockStyle}" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Run x:Name="Angle" Text="-" />°
+                        </TextBlock>
+                    </Border>
+                </StackPanel>
 
-                <Border Width="80">
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <controls:KinectViewer x:Name="viewer" />
+                <Viewbox>
+                    <Canvas Width="1920" Height="1080">
+                        <controls:KinectAngle x:Name="angle1" Opacity="0.5" Fill="Green" />
+                        <controls:KinectAngle x:Name="angle2" Opacity="0.5" Fill="Blue" />
+                        <controls:KinectAngle x:Name="angle3" Opacity="0.5" Fill="Red" />
+                        <controls:KinectAngle x:Name="angle4" Opacity="0.5" Fill="Purple" />
+
+                        <controls:KinectAngle x:Name="angle5" Opacity="0.5" Fill="Green" />
+                        <controls:KinectAngle x:Name="angle6" Opacity="0.5" Fill="Blue" />
+                        <controls:KinectAngle x:Name="angle7" Opacity="0.5" Fill="Red" />
+                        <controls:KinectAngle x:Name="angle8" Opacity="0.5" Fill="Purple" />
+                    </Canvas>
+                </Viewbox>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="40"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="2">
+                <Button FontSize="10" Style="{StaticResource ButtonTileStyle}" Content="Clear" Click="clear"/>
+            </Grid>
+
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Column="0" >
                     <Border.Background>
                         <SolidColorBrush Color="Black" Opacity="0.7" />
                     </Border.Background>
                     <TextBlock Style="{StaticResource HeaderTextBlockStyle}" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <Run x:Name="Angle" Text="-" />°
+                        Left
                     </TextBlock>
                 </Border>
-            </StackPanel>
+
+                <Border Grid.Column="1" >
+                    <Border.Background>
+                        <SolidColorBrush Color="Black" Opacity="0.7" />
+                    </Border.Background>
+                    <TextBlock Style="{StaticResource HeaderTextBlockStyle}" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        Right
+                    </TextBlock>
+                </Border>
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="0">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Button Grid.Row="0" Style="{StaticResource ButtonTileStyle}" Content="Hip extension" Click="hipel"/>
+                    <Button Grid.Row="1" Style="{StaticResource ButtonTileStyle}" Content="Hip flexion" Click="hipfl"/>
+                    <Button Grid.Row="2" Style="{StaticResource ButtonTileStyle}" Content="Knee flexion" Click="kneefl"/>
+                    <Button Grid.Row="3" Style="{StaticResource ButtonTileStyle}" Content="Shoulder flexion" Click="shoulderfl"/>
+                    <Button Grid.Row="4" Style="{StaticResource ButtonTileStyle}" Content="Elbow flexion" Click="elbowfl"/>
+                </Grid>
+
+                <Grid Grid.Column="1">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Button Grid.Row="0" Style="{StaticResource ButtonTileStyle}" Content="Hip extension" Click="hiper" Name="rhe"/>
+                    <Button Grid.Row="1" Style="{StaticResource ButtonTileStyle}" Content="Hip flexion" Click="hipfr" />
+                    <Button Grid.Row="2" Style="{StaticResource ButtonTileStyle}" Content="Knee flexion" Click="kneefr"/>
+                    <Button Grid.Row="3" Style="{StaticResource ButtonTileStyle}" Content="Shoulder flexion" Click="shoulderfr"/>
+                    <Button Grid.Row="4" Style="{StaticResource ButtonTileStyle}" Content="Elbow flexion" Click="elbowfr" />
+                </Grid>
+            </Grid>
         </Grid>
 
-        <Grid Grid.Row="1">
-            <controls:KinectViewer x:Name="viewer" />
-            <Viewbox>
-                <Canvas Width="1920" Height="1080">
-                    <controls:KinectAngle x:Name="angle1" Opacity="0.5" Fill="Green" />
-                    <controls:KinectAngle x:Name="angle2" Opacity="0.5" Fill="Blue" />
-                    <controls:KinectAngle x:Name="angle3" Opacity="0.5" Fill="Red" />
-                    <controls:KinectAngle x:Name="angle4" Opacity="0.5" Fill="Purple" />
-                    
-                    <controls:KinectAngle x:Name="angle5" Opacity="0.5" Fill="Green" />
-                    <controls:KinectAngle x:Name="angle6" Opacity="0.5" Fill="Blue" />
-                    <controls:KinectAngle x:Name="angle7" Opacity="0.5" Fill="Red" />
-                    <controls:KinectAngle x:Name="angle8" Opacity="0.5" Fill="Purple" />
-                </Canvas>
-            </Viewbox>
-        </Grid>
+        
     </Grid>
 </Page>

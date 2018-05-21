@@ -9,19 +9,26 @@
       Title="MainPage">
 
     <Grid>
-        <Grid Margin="4,0,4,4">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Margin="4,0,4,4">
             <Grid.RowDefinitions>
                 <RowDefinition Height="200" />
                 <RowDefinition Height="*" />
-                
+                <RowDefinition Height="30"/>
             </Grid.RowDefinitions>
+            
+            
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Image Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Source="/Resources/554568a6-fed7-49dc-9e88-f7614f106fc1.png" />
-            <Button Grid.Row="1" Grid.Column="0" Style="{StaticResource ButtonTileStyle}" Content="Auto range of motion" Click="Start_Click" />
-            <Button Grid.Row="1" Grid.Column="2" Style="{StaticResource ButtonTileStyle}" Content="Selection range of motion" Click="Start2_Click" />
-        </Grid>
+            <Image Grid.Row="0" Grid.ColumnSpan="3" RenderOptions.BitmapScalingMode="HighQuality" Stretch="Fill" Source="/Resources/554568a6-fed7-49dc-9e88-f7614f106fc1.png" Width="300" Height="250"/>
+            <Button Grid.Row="1" Grid.Column="2" Style="{StaticResource ButtonTileStyle}" Content="Auto range of motion" Click="Start_Click" />
+            <Button Grid.Row="1" Grid.Column="0" Style="{StaticResource ButtonTileStyle}" Content="Selection range of motion" Click="Start2_Click" />
+            </Grid>
+        <Button Grid.Row="2" Style="{StaticResource ButtonTileStyle}" Padding="0" FontSize="12" FontWeight="Normal" Content="Conntion DB " Click="db_Click" />
     </Grid>
 </Page>

@@ -149,7 +149,7 @@ namespace WpfApp1
                             move.Text = "Hip extension right";
                             viewer.DrawBody(body);
                             angle4.Update(body.Joints[st4], body.Joints[ce4], body.Joints[en4], 50); //hip
-                            Angle.Text = (((int)angle4.Angle - 100)).ToString();
+                            Angle.Text = Math.Abs((((int)angle4.Angle - 100))).ToString();
 
                             if (t == 1)
                             {
@@ -162,7 +162,7 @@ namespace WpfApp1
                             move.Text = "Hip flexion right";
                             viewer.DrawBody(body);
                             angle4.Update(body.Joints[st4], body.Joints[ce4], body.Joints[en4], 50); //hip
-                            Angle.Text = (((int)angle4.Angle - 100)).ToString();
+                            Angle.Text = Math.Abs((((int)angle4.Angle - 100))).ToString();
 
                             if (t == 1)
                             {
@@ -175,7 +175,7 @@ namespace WpfApp1
                             move.Text = "Kenn flexion right";
                             viewer.DrawBody(body);
                             angle3.Update(body.Joints[st3], body.Joints[ce3], body.Joints[en3], 50); //knee
-                            Angle.Text = (((int)angle3.Angle - 180)).ToString();
+                            Angle.Text = Math.Abs((((int)angle3.Angle - 180))).ToString();
 
                             if (t == 1)
                             {
@@ -188,7 +188,7 @@ namespace WpfApp1
                             move.Text = "Shoulder flexion right";
                             viewer.DrawBody(body);
                             angle2.Update(body.Joints[st2], body.Joints[ce2], body.Joints[en2], 50); //shoulder
-                            Angle.Text = (((int)angle2.Angle - 120)).ToString();
+                            Angle.Text = Math.Abs((((int)angle2.Angle - 120))).ToString();
 
                             if (t == 1)
                             {
@@ -201,7 +201,7 @@ namespace WpfApp1
                             move.Text = "Elbow flexion right";
                             viewer.DrawBody(body);
                             angle1.Update(body.Joints[st1], body.Joints[ce1], body.Joints[en1], 50); //elbow
-                            Angle.Text = (-1 * ((int)angle1.Angle -180)).ToString();
+                            Angle.Text = Math.Abs((-1 * ((int)angle1.Angle -180))).ToString();
 
                             if (t == 1)
                             {
@@ -214,7 +214,7 @@ namespace WpfApp1
                             move.Text = "Hip extension left";
                             viewer.DrawBody(body);
                             angle8.Update(body.Joints[st8], body.Joints[ce8], body.Joints[en8], 50); //hip
-                            Angle.Text = (-1*((int)angle8.Angle - 270)).ToString();
+                            Angle.Text = Math.Abs((-1*((int)angle8.Angle - 270))).ToString();
 
                             if (t == 1)
                             {
@@ -227,7 +227,7 @@ namespace WpfApp1
                             move.Text = "Hip flexion left";
                             viewer.DrawBody(body);
                             angle8.Update(body.Joints[st8], body.Joints[ce8], body.Joints[en8], 50); //hip
-                            Angle.Text = ((-1 * ((int)angle8.Angle - 270))).ToString();
+                            Angle.Text = Math.Abs(((-1 * ((int)angle8.Angle - 270)))).ToString();
 
                             if (t == 1)
                             {
@@ -240,7 +240,7 @@ namespace WpfApp1
                             move.Text = "Knee flexion left";
                             viewer.DrawBody(body);
                             angle7.Update(body.Joints[st7], body.Joints[ce7], body.Joints[en7], 50); //knee
-                            Angle.Text = (-1*((int)angle7.Angle - 180)).ToString();
+                            Angle.Text = Math.Abs((-1*((int)angle7.Angle - 180))).ToString();
 
                             if (t == 1)
                             {
@@ -253,7 +253,7 @@ namespace WpfApp1
                             move.Text = "Shoulder flexion left";
                             viewer.DrawBody(body);
                             angle6.Update(body.Joints[st6], body.Joints[ce6], body.Joints[en6], 50); //shoulder
-                            Angle.Text = (-1*((int)angle6.Angle - 240)).ToString();
+                            Angle.Text = Math.Abs( (-1*((int)angle6.Angle - 240))).ToString();
 
                             if (t == 1)
                             {
@@ -266,7 +266,7 @@ namespace WpfApp1
                             move.Text = "Elbow flexion left";
                             viewer.DrawBody(body);
                             angle5.Update(body.Joints[st5], body.Joints[ce5], body.Joints[en5], 50); //elbow
-                            Angle.Text = (((int)angle5.Angle -180)).ToString();
+                            Angle.Text = Math.Abs((((int)angle5.Angle - 180))) .ToString();
 
                             if(t == 1)
                             {
@@ -276,18 +276,16 @@ namespace WpfApp1
                         else if (motion == 10)
                         {
                             Clear();
-                            time.Text = "-";
+                            time.Text = "Done";
                             move.Text = "Done";
                             timer1.Tick += new EventHandler(timer1_Stop);
-                            DialogResult result1 = System.Windows.Forms.MessageBox.Show("Do you want to save","Save",MessageBoxButtons.YesNo);
+
+                            DialogResult result1 = System.Windows.Forms.MessageBox.Show("Do you want to save ?","Save",MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                             if (result1 == DialogResult.Yes)
                             {
                                 NavigationService.Navigate(new InformationPage(list));
                             }
-                            else
-                            {
-                                //Environment.Exit(-1);
-                            }
+                            
                         }
                     }
                 }

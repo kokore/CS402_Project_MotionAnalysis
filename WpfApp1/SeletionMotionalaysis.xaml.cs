@@ -62,6 +62,7 @@ namespace WpfApp1
         JointType en8 = JointType.SpineBase;
 
         string value;
+        bool checkleft_or_right;
 
         public sele()
         {
@@ -139,79 +140,79 @@ namespace WpfApp1
                         //angle4.Update(body.Joints[st4], body.Joints[ce4], body.Joints[en4], 50);  //ankle
                         //angle9.Update(body.Joints[st9], body.Joints[ce9], body.Joints[en9], 50); //ankle
 
-                        if(rb2.IsChecked==true)
+                        if( checkleft_or_right )//rb2.IsChecked==true
                         {
                             if (value == "Hip extension")
                             {
                                 Clear();
                                 viewer.DrawBody(body);
                                 angle4.Update(body.Joints[st4], body.Joints[ce4], body.Joints[en4], 50); //hip right
-                                Angle.Text = ((((int)angle4.Angle -100))).ToString(); //work
+                                Angle.Text = Math.Abs(((((int)angle4.Angle -100)))).ToString(); //work
                             }
                             else if (value == "Hip flexion")
                             {
                                 Clear();
                                 viewer.DrawBody(body);
                                 angle4.Update(body.Joints[st4], body.Joints[ce4], body.Joints[en4], 50); //hip right
-                                Angle.Text = ((((int)angle4.Angle -100))).ToString(); //work
+                                Angle.Text = Math.Abs(((((int)angle4.Angle -100)))).ToString(); //work
                             }
                             else if (value == "Knee flexion")
                             {
                                 Clear();
                                 viewer.DrawBody(body);
                                 angle3.Update(body.Joints[st3], body.Joints[ce3], body.Joints[en3], 50); //knee right
-                                Angle.Text = ( ((int)angle3.Angle -180)).ToString(); //work 
+                                Angle.Text = Math.Abs(( ((int)angle3.Angle -180))).ToString(); //work 
                             }
                             else if (value == "Shoulder flexion")
                             {
                                 Clear();
                                 viewer.DrawBody(body);
                                 angle2.Update(body.Joints[st2], body.Joints[ce2], body.Joints[en2], 50); //shoulder right
-                                Angle.Text = ( ((int)angle2.Angle -120)).ToString(); //work
+                                Angle.Text = Math.Abs(( ((int)angle2.Angle -120))).ToString(); //work
                             }
                             else if (value == "Elbow flexion")
                             {
                                 Clear();
                                 viewer.DrawBody(body);
                                 angle1.Update(body.Joints[st1], body.Joints[ce1], body.Joints[en1], 50); //elbow right
-                                Angle.Text = (-1 * ((int)angle1.Angle -180 )).ToString(); //work
+                                Angle.Text = Math.Abs((-1 * ((int)angle1.Angle -180 ))).ToString(); //work
                             }
-                        }else if (rb1.IsChecked == true)
+                        }else //rb1.IsChecked == true   //rb1 is left  , rb2 is right
                         {
                             if (value == "Hip extension")
                             {
                                 Clear();
                                 viewer.DrawBody(body);
                                 angle8.Update(body.Joints[st8], body.Joints[ce8], body.Joints[en8], 50); //hip left
-                                Angle.Text = ( -1* ((int)angle8.Angle -270)).ToString(); //work
+                                Angle.Text = Math.Abs(( -1* ((int)angle8.Angle -270))).ToString(); //work
                             }
                             else if (value == "Hip flexion")
                             {
                                 Clear();
                                 viewer.DrawBody(body);
                                 angle8.Update(body.Joints[st8], body.Joints[ce8], body.Joints[en8], 50); //hip left
-                                Angle.Text = ((-1 * ((int)angle8.Angle - 270))).ToString(); //work
+                                Angle.Text = Math.Abs(((-1 * ((int)angle8.Angle - 270)))).ToString(); //work
                             }
                             else if (value == "Knee flexion")
                             {
                                 Clear();
                                 viewer.DrawBody(body);
                                 angle7.Update(body.Joints[st7], body.Joints[ce7], body.Joints[en7], 50); //kenn left
-                                Angle.Text = ( -1*((int)angle7.Angle -180)).ToString(); //work
+                                Angle.Text = Math.Abs(( -1*((int)angle7.Angle -180))).ToString(); //work
                             }
                             else if (value == "Shoulder flexion")
                             {
                                 Clear();
                                 viewer.DrawBody(body);
                                 angle6.Update(body.Joints[st6], body.Joints[ce6], body.Joints[en6], 50); //shoulder left
-                                Angle.Text = (-1 * (((int)angle6.Angle) -240)).ToString(); //work
+                                Angle.Text = Math.Abs((-1 * (((int)angle6.Angle) -240))).ToString(); //work
                             }
                             else if (value == "Elbow flexion")
                             {
                                 Clear();
                                 viewer.DrawBody(body);
                                 angle5.Update(body.Joints[st5], body.Joints[ce5], body.Joints[en5], 50); //elbow left
-                                Angle.Text = (((int)angle5.Angle -180)).ToString(); //work
+                                Angle.Text = Math.Abs((((int)angle5.Angle -180))).ToString(); //work
                             }
                         }
 
@@ -234,7 +235,7 @@ namespace WpfApp1
         }
 
 
-        private void combo_Loaded(object sender, RoutedEventArgs e)
+        /*private void combo_Loaded(object sender, RoutedEventArgs e)
         {
 
             List<string> data = new List<string>();
@@ -261,7 +262,75 @@ namespace WpfApp1
             // ... Set SelectedItem as Window Title.
             value = comboBox.SelectedItem as string;
 
+        }*/
+
+       
+
+        private void hiper(object sender, RoutedEventArgs e)
+        {
+            value = "Hip extension";
+            checkleft_or_right = true;
         }
 
+        private void hipfr(object sender, RoutedEventArgs e)
+        {
+            value = "Hip flexion";
+            checkleft_or_right = true;
+        }
+
+        private void kneefr(object sender, RoutedEventArgs e)
+        {
+            value = "Knee flexion";
+            checkleft_or_right = true;
+        }
+
+        private void shoulderfr(object sender, RoutedEventArgs e)
+        {
+            value = "Shoulder flexion";
+            checkleft_or_right = true;
+        }
+
+        private void elbowfr(object sender, RoutedEventArgs e)
+        {
+            value = "Elbow flexion";
+            checkleft_or_right = true;
+        }
+
+        private void hipel(object sender, RoutedEventArgs e)
+        {
+            value = "Hip extension";
+            checkleft_or_right = false;
+        }
+
+        private void hipfl(object sender, RoutedEventArgs e)
+        {
+            value = "Hip flexion";
+            checkleft_or_right = false;
+        }
+
+        private void kneefl(object sender, RoutedEventArgs e)
+        {
+            value = "Knee flexion";
+            checkleft_or_right = false;
+        }
+
+        private void shoulderfl(object sender, RoutedEventArgs e)
+        {
+            value = "Shoulder flexion";
+            checkleft_or_right = false;
+        }
+
+        private void elbowfl(object sender, RoutedEventArgs e)
+        {
+            value = "Elbow flexion";
+            checkleft_or_right = false;
+        }
+
+        private void clear(object sender, RoutedEventArgs e)
+        {
+            value = "-";
+            Clear();
+            Angle.Text = "-";
+        }
     }
 }

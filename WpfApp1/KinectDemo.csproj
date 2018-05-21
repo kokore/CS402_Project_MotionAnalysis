@@ -12,6 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,7 +25,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -77,14 +77,25 @@
     <Compile Include="InformationPage.xaml.cs">
       <DependentUpon>InformationPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Loginpage.xaml.cs">
+      <DependentUpon>Loginpage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Resolution\CResolution.cs" />
     <Compile Include="SeletionMotionalaysis.xaml.cs">
       <DependentUpon>SeletionMotionalaysis.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="usermanager.xaml.cs">
+      <DependentUpon>usermanager.xaml</DependentUpon>
     </Compile>
     <Page Include="AutoMotionalaysis.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="InformationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Loginpage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -111,6 +122,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="SeletionMotionalaysis.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="usermanager.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -146,8 +161,18 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\ma.ico" />
     <Resource Include="Resources\16-logo-300x225.jpg" />
     <Resource Include="Resources\554568a6-fed7-49dc-9e88-f7614f106fc1.png" />
+    <Content Include="localdb\local_db.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="localdb\local_db_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>local_db.mdf</DependentUpon>
+    </Content>
+    <Resource Include="Resources\db.png" />
+    <Resource Include="Resources\high-volume.png" />
     <Content Include="Resources\LightBuzz.Vitruvius.dll" />
     <Resource Include="Resources\one_tree.jpg" />
   </ItemGroup>
@@ -158,5 +183,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

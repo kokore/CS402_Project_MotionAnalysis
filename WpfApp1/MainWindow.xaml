@@ -10,7 +10,8 @@
         Height="950" Width="1400"
         WindowState="Maximized"
         WindowStartupLocation="CenterScreen"
-        Loaded="Window_Loaded">
+        Loaded="Window_Loaded"
+        Icon="/Resources/ma.ico" >
     <Grid>
       <Grid.Background>
         <ImageBrush ImageSource="/Resources/one_tree.jpg" />

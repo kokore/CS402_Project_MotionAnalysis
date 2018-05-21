@@ -13,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace WpfApp1
 {
@@ -21,64 +23,88 @@ namespace WpfApp1
     /// </summary>
     public partial class InformationPage : Page
     {
-        List<int> li = new List<int>();
+        int listcount=0,st=0;
+        SqlConnection connection = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\KoKoR\\Source\\Repos\\CS402_Project_MotionAnalysis\\WpfApp1\\localdb\\local_db.mdf;Integrated Security=True");
         public InformationPage(System.Collections.ArrayList list)
         {
             InitializeComponent();
-            
+
+           /* while (true)
+            {
+                if (list.Count != 150)
+                {
+                    list.Add(0);
+                }
+                else
+                {
+                    break;
+                }
+            }*/
+
             Setangle(list);
         }
 
-        private void Setangle(ArrayList list)
+        public void Setangle(ArrayList list)
         {
-            int sum = 0,angle= 0;
-            
-            for(int i = 1; i < (list.Count +1); i++)
+            int angle= 0;
+            listcount = list.Count;
+            for(int i = 1; i < (listcount +1); i++)
             {
-                if(sum%15 == 0)
+                if(i%15 == 0)
                 {
-                    li.Sort();
-                    int temp = Math.Abs(li[li.Count / 2]);
-                    li.Clear();
+                    //ArrayList num = list.GetRange(st,i);
+                    //int mode = FindMode(num);
+                    int mode =(int) list[(i-15)+6];
                     switch (angle)
                     {
                         case 0:
-                            hipextensionright.Text = temp.ToString();
+                            hipextensionright.Text = mode.ToString();
                             break;
                         case 1:
-                            hipflexionright.Text = temp.ToString();
+                            hipflexionright.Text = mode.ToString();
                             break;
                         case 2:
-                            kneeflexionright.Text = temp.ToString();
+                            kneeflexionright.Text = mode.ToString();
                             break;
                         case 3:
-                            shoulderflexionright.Text = temp.ToString();
+                            shoulderflexionright.Text = mode.ToString();
                             break;
                         case 4:
-                            elbowflexionright.Text = temp.ToString();
+                            elbowflexionright.Text = mode.ToString();
                             break;
                         case 5:
-                            hipextensionleft.Text = temp.ToString();
+                            hipextensionleft.Text = mode.ToString();
                             break;
                         case 6:
-                            hipflexionleft.Text = temp.ToString();
+                            hipflexionleft.Text = mode.ToString();
                             break;
                         case 7:
-                            Kneeflexionleft.Text = temp.ToString();
+                            kneeflexionleft.Text = mode.ToString();
                             break;
                         case 8:
-                            shoulderflexionleft.Text = temp.ToString();
+                            shoulderflexionleft.Text = mode.ToString();
                             break;
                         case 9:
-                            elbowflexionleft.Text = temp.ToString();
+                            elbowflexionleft.Text = mode.ToString();
                             break;
                     }
                     angle++;
+                    st = st + 15;
                 }
-                li.Add((int)list[i-1]);
-                Console.WriteLine("i = {0} number {1}",i-1,list[i - 1]);
             }
         }
+
+       /* private int FindMode(ArrayList num)
+        {
+            int [] array = num.ToArray(typeof(int)) as int[];
+
+            int mode = array.GroupBy(v => v)
+            .OrderByDescending(g => g.Count())
+            .First()
+            .Key;
+
+            return mode;
+        }*/
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
@@ -91,7 +117,34 @@ namespace WpfApp1
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-         
+            string sex = "N";
+            if(gender1.IsChecked == true)
+            {
+                sex = "M";
+            }
+            else
+            {
+                sex = "F";
+            }
+            connection.Open();
+            SqlCommand cmd = connection.CreateCommand();
+            cmd.CommandText = "insert into [user] (firstname , lastname , gender , birthday , hipextensionright , hipflexionright , kneeflexionright , shoulderflexionright , elbowflexionright , hipextensionleft , hipflexionleft , kneeflexionleft , shoulderflexionleft , elbowflexionleft) " +
+                "values ('"+ fname.Text + "' , '" + lname.Text + "' , '" + sex + "' , '" + date.Text + "' , '" + hipextensionright.Text + "', '" + hipflexionright.Text + "' , '" + kneeflexionright.Text + "' , '" + shoulderflexionright.Text + "' , '" + elbowflexionright.Text + "' " +
+                ", '" + hipextensionleft.Text + "' , '" + hipflexionleft.Text + "' , '" + kneeflexionleft.Text + "' , '" + shoulderflexionleft.Text + "' , '" + elbowflexionleft.Text + "')";
+            cmd.ExecuteNonQuery();
+            connection.Close();
+            fname.Text = "";
+            lname.Text = "";
+            gender1.IsChecked = false;
+            gender2.IsChecked = false;
+            date.Text = "";
+
+            DialogResult result1 = System.Windows.Forms.MessageBox.Show("Save information Success", "Information", MessageBoxButtons.OK);
+            if(result1 == DialogResult.OK)
+            {
+                NavigationService.Navigate(new MainPage());
+            }
         }
     }
-}
+            
+ }

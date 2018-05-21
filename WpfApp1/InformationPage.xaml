@@ -20,7 +20,7 @@
                 <ColumnDefinition Width="70"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="backButton" Click="Back_Click"
+            <Button x:Name="backButton" 
                     Style="{StaticResource NavigationBackButtonNormalStyle}"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"/>
@@ -43,11 +43,11 @@
             </StackPanel>
 
             <StackPanel Grid.Column="1" Margin="0,0,0,0" Background="Gray">
-                <TextBox Style="{StaticResource TextboxStyle}" Margin="20"/>
-                <TextBox Style="{StaticResource TextboxStyle}" Margin="20"/>
-                <RadioButton Content="Male" Margin="20" FontFamily="Consolas" FontSize="20"/>
-                <RadioButton Content="Female" Margin="20" FontFamily="Consolas" FontSize="20"/>
-                <DatePicker Margin="20" FontFamily="Consolas" FontSize="20"/>
+                <TextBox Style="{StaticResource TextboxStyle}" Margin="20" x:Name="fname" />
+                <TextBox Style="{StaticResource TextboxStyle}" Margin="20" x:Name="lname" />
+                <RadioButton Content="Male" Margin="20" FontFamily="Consolas" FontSize="20" x:Name="gender1" />
+                <RadioButton Content="Female" Margin="20" FontFamily="Consolas" FontSize="20" x:Name="gender2" />
+                <DatePicker Margin="20" FontFamily="Consolas" FontSize="20" x:Name="date" />
             </StackPanel>
 
             <StackPanel Grid.Column="2" Margin="0,0,0,0" Background="Black">
@@ -67,7 +67,7 @@
                 
                 
                 <TextBlock Style="{StaticResource CodeTextBlockStyle}" Margin="20,30,20,0" TextAlignment="Left"><Run Text="Knee flexion"/><InlineUIContainer>
-                        <TextBlock TextWrapping="Wrap"  Margin="165,0,0,0" > <Run x:Name="Kneeflexionleft" Text="-" />°  </TextBlock>
+                        <TextBlock TextWrapping="Wrap"  Margin="165,0,0,0" > <Run x:Name="kneeflexionleft" Text="-" />°  </TextBlock>
                     </InlineUIContainer><InlineUIContainer>
                         <TextBlock TextWrapping="Wrap"  Margin="80,0,0,0" > <Run x:Name="kneeflexionright" Text="-" />°  </TextBlock>
                     </InlineUIContainer></TextBlock>
@@ -91,7 +91,7 @@
         </Grid>
 
         <Grid Grid.Row="2" >
-            <Button Style="{StaticResource ButtonTileStyle}" Padding="0" FontSize="12" FontWeight="Normal" Content="Save" Click="Save_Click" />
+            <Button Style="{StaticResource ButtonTileStyle}" Padding="0" FontSize="12" FontWeight="Normal" Content="Save" />
         </Grid>
     </Grid>
 </Page>

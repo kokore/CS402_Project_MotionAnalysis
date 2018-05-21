@@ -1,0 +1,39 @@
+﻿<Page x:Class="WpfApp1.usermanager"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp1"
+      mc:Ignorable="d" 
+      d:DesignHeight="700" d:DesignWidth="900"
+      Title="usermanager"
+      Loaded="Window_Loaded">
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="backButton" Click="Back_Click"
+                    Style="{StaticResource NavigationBackButtonNormalStyle}"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"/>
+            <TextBlock x:Name="pageTitle" Text="Back" Style="{StaticResource HeaderTextBlockStyle}" Grid.Column="1" 
+                       IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Center" />
+            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">
+            </StackPanel>
+
+            
+        </Grid>
+
+        <DataGrid Name="myDataGrid" Grid.Row="1" ItemsSource="{Binding}"/>
+
+    </Grid>
+</Page>
