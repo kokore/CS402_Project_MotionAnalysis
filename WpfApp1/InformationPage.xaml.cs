@@ -126,10 +126,11 @@ namespace WpfApp1
             {
                 sex = "F";
             }
+
             connection.Open();
             SqlCommand cmd = connection.CreateCommand();
-            cmd.CommandText = "insert into [user] (firstname , lastname , gender , birthday , hipextensionright , hipflexionright , kneeflexionright , shoulderflexionright , elbowflexionright , hipextensionleft , hipflexionleft , kneeflexionleft , shoulderflexionleft , elbowflexionleft) " +
-                "values ('"+ fname.Text + "' , '" + lname.Text + "' , '" + sex + "' , '" + date.Text + "' , '" + hipextensionright.Text + "', '" + hipflexionright.Text + "' , '" + kneeflexionright.Text + "' , '" + shoulderflexionright.Text + "' , '" + elbowflexionright.Text + "' " +
+            cmd.CommandText = "insert into [user] (firstname , lastname , gender , brithday , hipextensionright , hipflexionright , kneeflexionright , shoulderflexionright , elbowflexionright , hipextensionleft , hipflexionleft , kneeflexionleft , shoulderflexionleft , elbowflexionleft) " +
+                "values ('"+ fname.Text + "' , '" + lname.Text + "' , '" + sex + "' , '" + date.SelectedDate.Value.Date.ToShortDateString().ToString() + "' , '" + hipextensionright.Text + "', '" + hipflexionright.Text + "' , '" + kneeflexionright.Text + "' , '" + shoulderflexionright.Text + "' , '" + elbowflexionright.Text + "' " +
                 ", '" + hipextensionleft.Text + "' , '" + hipflexionleft.Text + "' , '" + kneeflexionleft.Text + "' , '" + shoulderflexionleft.Text + "' , '" + elbowflexionleft.Text + "')";
             cmd.ExecuteNonQuery();
             connection.Close();

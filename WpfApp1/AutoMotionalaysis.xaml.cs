@@ -26,7 +26,7 @@ namespace WpfApp1
     /// </summary>
     public partial class auto : Page
     {
-
+        int count=0;
         KinectSensor sensor;
         MultiSourceFrameReader reader;
         PlayersController players;
@@ -280,12 +280,15 @@ namespace WpfApp1
                             move.Text = "Done";
                             timer1.Tick += new EventHandler(timer1_Stop);
 
-                            DialogResult result1 = System.Windows.Forms.MessageBox.Show("Do you want to save ?","Save",MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                            if (result1 == DialogResult.Yes)
+                            if (count == 0)
                             {
-                                NavigationService.Navigate(new InformationPage(list));
+                                DialogResult result1 = System.Windows.Forms.MessageBox.Show("Do you want to save ?", "Save", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                if (result1 == DialogResult.OK)
+                                {
+                                    NavigationService.Navigate(new InformationPage(list));
+                                }
                             }
-                            
+                            count++;
                         }
                     }
                 }

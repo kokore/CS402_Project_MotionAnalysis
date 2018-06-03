@@ -22,7 +22,7 @@ namespace WpfApp1
     /// </summary>
     public partial class usermanager : Page
     {
-        SqlConnection connection = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\KoKoR\\Source\\Repos\\CS402_Project_MotionAnalysis\\WpfApp1\\localdb\\local_db.mdf;Integrated Security=True");
+        SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\KoKoR\\Source\\Repos\\CS402_Project_MotionAnalysis\\WpfApp1\\localdb\\local_db.mdf;Integrated Security=True");
         public usermanager()
         {
             InitializeComponent();
@@ -45,10 +45,10 @@ namespace WpfApp1
 
         private void Filldata()
         {
-            connection.Open();
-            SqlCommand com = new SqlCommand("SELECT * FROM user",connection);
+            conn.Open();
+            SqlCommand comm = new SqlCommand("SELECT * FROM user", conn);
             DataSet ds = new DataSet();
-            SqlDataAdapter da = new SqlDataAdapter(com);
+            SqlDataAdapter da = new SqlDataAdapter(comm);
             da.Fill(ds);
             myDataGrid.ItemsSource = ds.Tables[0].DefaultView;
 

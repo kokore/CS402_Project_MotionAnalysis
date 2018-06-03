@@ -33,7 +33,7 @@
             
         </Grid>
 
-        <DataGrid Name="myDataGrid" Grid.Row="1" ItemsSource="{Binding}"/>
+        <DataGrid  Name="myDataGrid" Grid.Row="1" ItemsSource="{Binding}"/>
 
     </Grid>
 </Page>

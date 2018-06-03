@@ -91,7 +91,7 @@
         </Grid>
 
         <Grid Grid.Row="2" >
-            <Button Style="{StaticResource ButtonTileStyle}" Padding="0" FontSize="12" FontWeight="Normal" Content="Save" />
+            <Button Style="{StaticResource ButtonTileStyle}" Padding="0" FontSize="12" FontWeight="Normal" Content="Save" Click="Save_Click"   />
         </Grid>
     </Grid>
 </Page>
