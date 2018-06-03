@@ -161,6 +161,10 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\Shoulder flexion left.mp3" />
+    <Content Include="Resources\Shoulder flexion right.mp3" />
+    <Content Include="Resources\START.mp3" />
+    <Content Include="Resources\Well done.mp3" />
     <Resource Include="Resources\ma.ico" />
     <Resource Include="Resources\16-logo-300x225.jpg" />
     <Resource Include="Resources\554568a6-fed7-49dc-9e88-f7614f106fc1.png" />
@@ -173,6 +177,14 @@
     </Content>
     <Resource Include="Resources\db.png" />
     <Resource Include="Resources\high-volume.png" />
+    <Content Include="Resources\Elbow flexion left.mp3" />
+    <Content Include="Resources\Elbow flexion right.mp3" />
+    <Content Include="Resources\Hip extension left.mp3" />
+    <Content Include="Resources\Hipextensionright.mp3" />
+    <Content Include="Resources\Hip flexion left.mp3" />
+    <Content Include="Resources\Hip flexion right.mp3" />
+    <Content Include="Resources\Knee flexion left.mp3" />
+    <Content Include="Resources\Knee flexion right.mp3" />
     <Content Include="Resources\LightBuzz.Vitruvius.dll" />
     <Resource Include="Resources\one_tree.jpg" />
   </ItemGroup>

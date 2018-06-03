@@ -37,8 +37,9 @@ namespace WpfApp1
 
         private void login_btn(object sender, RoutedEventArgs e)
         {
+            //connection login id
             SqlConnection sqlcon = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\KoKoR\Source\Repos\CS402_Project_MotionAnalysis\WpfApp1\localdb\local_db.mdf;Integrated Security=True");
-            string query = "Select * from Login Where username = '" + username_text.Text.Trim() + "' and password = '" + password_text.Text.Trim() + "'";
+            string query = "Select * from Login Where username = '" + username_text.Text.Trim() + "' and password = '" + password_text.Password + "'";
             SqlDataAdapter sda = new SqlDataAdapter(query, sqlcon);
             DataTable dtbl = new DataTable();
             sda.Fill(dtbl);

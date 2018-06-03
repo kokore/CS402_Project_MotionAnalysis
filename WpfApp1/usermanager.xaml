@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WpfApp1"
       mc:Ignorable="d" 
-      d:DesignHeight="700" d:DesignWidth="900"
+      d:DesignHeight="700" d:DesignWidth="1200"
       Title="usermanager"
       Loaded="Window_Loaded">
 
@@ -14,6 +14,8 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="110"/>
+            <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
@@ -30,10 +32,75 @@
             <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">
             </StackPanel>
 
-            
+
         </Grid>
 
         <DataGrid  Name="myDataGrid" Grid.Row="1" ItemsSource="{Binding}"/>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+
+            <TextBlock  Foreground="Black" Grid.Column="0" Style="{StaticResource CodeTextBlockStyle}" Text="Id"  TextAlignment="Left" Margin="70,40,0,0"/>
+            <TextBox Grid.Column="0" Style="{StaticResource TextboxStyle}" Margin="142,40,48,43" x:Name="idinput" />
+
+            <TextBlock  Foreground="Black" Grid.Column="1" Style="{StaticResource CodeTextBlockStyle}" Text="firstname"  TextAlignment="Left" Margin="1,0,399,0" Grid.ColumnSpan="2"/>
+            <TextBox Grid.Column="1" Style="{StaticResource TextboxStyle}" Margin="142,0,10,90" x:Name="firstnameinput" FontSize="14" />
+            <TextBlock  Foreground="Black" Grid.Column="1" Style="{StaticResource CodeTextBlockStyle}" Text="lastname"  TextAlignment="Left" Margin="0,20,0,0"/>
+            <TextBox Grid.Column="1" Style="{StaticResource TextboxStyle}" Margin="142,27,10,65" x:Name="lastnameinput" FontSize="14" />
+            <TextBlock  Foreground="Black" Grid.Column="1" Style="{StaticResource CodeTextBlockStyle}" Text="Gender"  TextAlignment="Left" Margin="0,45,0,0"/>
+            <RadioButton Content="Male" FontFamily="Consolas" FontSize="14" x:Name="gender1" Grid.Column="1" Margin="128,52,96,41" RenderTransformOrigin="0.5,0.5">
+            </RadioButton>
+            <RadioButton Content="Female"  FontFamily="Consolas" FontSize="14" x:Name="gender2"  Grid.Column="1" Margin="204,53,10,39"/>
+            <TextBlock Foreground="Black" Grid.Column="1" Style="{StaticResource CodeTextBlockStyle}" Text="Birthday"  TextAlignment="Left" Margin="0,70,0,0"/>
+            <DatePicker Margin="114,76,10,10" FontFamily="Consolas" FontSize="14" x:Name="date" Grid.Column="1"/>
+
+            <TextBlock Foreground="Black" Grid.Column="2" Style="{StaticResource CodeTextBlockStyle}" Text="Hip extension left" FontSize="11" TextAlignment="Left" Margin="0,6,280,89"/>
+
+            <TextBlock Foreground="Black" Grid.Column="2" Style="{StaticResource CodeTextBlockStyle}" Text="Hip extension right" FontSize="11" TextAlignment="Left" Margin="229,5,50,90"/>
+            <TextBox Grid.Column="2" Style="{StaticResource TextboxStyle}" Width="50" Margin="350,6,0,89" x:Name="herinput" FontSize="11" />
+            <TextBox Grid.Column="2" Style="{StaticResource TextboxStyle}" Width="50" Margin="114,6,236,91" x:Name="helinput" FontSize="11" />
+
+
+            <TextBlock Foreground="Black" Grid.Column="2" Style="{StaticResource CodeTextBlockStyle}" Text="Hip flexion left" FontSize="11" TextAlignment="Left" Margin="0,26,297,69"/>
+            <TextBlock Foreground="Black" Grid.Column="2" Style="{StaticResource CodeTextBlockStyle}" Text="Hip flexion right" FontSize="11" TextAlignment="Left" Margin="229,26,66,70"/>
+            <TextBox Grid.Column="2" Style="{StaticResource TextboxStyle}" Width="50"  Margin="350,25,0,71" x:Name="hfrinput" FontSize="11" />
+            <TextBox Grid.Column="2" Style="{StaticResource TextboxStyle}"  Width="50"  Margin="114,26,236,70" x:Name="hflinput" FontSize="11" />
+
+
+            <TextBlock Foreground="Black"  Grid.Column="2" Style="{StaticResource CodeTextBlockStyle}" Text="Knee flexion left" FontSize="11" TextAlignment="Left" Margin="0,45,287,52"/>
+            <TextBlock Foreground="Black"  Grid.Column="2" Style="{StaticResource CodeTextBlockStyle}" Text="Knee flexion right" FontSize="11" TextAlignment="Left" Margin="229,42,58,55"/>
+            <TextBox Grid.Column="2" Style="{StaticResource TextboxStyle}" Width="50"  Margin="350,44,0,52" x:Name="kfrinput" FontSize="11" />
+            <TextBox Grid.Column="2" Style="{StaticResource TextboxStyle}"  Width="50"  Margin="114,44,236,52" x:Name="kflinput" FontSize="11" />
+
+            <TextBlock Foreground="Black" Grid.Column="2" Style="{StaticResource CodeTextBlockStyle}" Text="Shoulder flexion left" FontSize="11" TextAlignment="Left" Margin="0,66,269,33"/>
+            <TextBlock Foreground="Black"  Grid.Column="2" Style="{StaticResource CodeTextBlockStyle}" Text="Shoulder flexion right" FontSize="11" TextAlignment="Left" Margin="229,62,34,33"/>
+            <TextBox Grid.Column="2" Style="{StaticResource TextboxStyle}" Width="50"  Margin="350,62,0,34" x:Name="sfrinput" FontSize="11" />
+            <TextBox Grid.Column="2" Style="{StaticResource TextboxStyle}"  Width="50"  Margin="114,63,236,33" x:Name="sflinput" FontSize="11" />
+
+
+            <TextBlock Foreground="Black" Grid.Column="2" Style="{StaticResource CodeTextBlockStyle}" Text="Elbow flexion left" FontSize="11" TextAlignment="Left" Margin="0,83,287,12"/>
+            <TextBlock Foreground="Black" Grid.Column="2" Style="{StaticResource CodeTextBlockStyle}" Text="Elbow flexion right" FontSize="11" TextAlignment="Left" Margin="229,82,52,13"/>
+            <TextBox Grid.Column="2" Style="{StaticResource TextboxStyle}" Width="50"  Margin="350,81,0,15" x:Name="efrinput" FontSize="11" />
+            <TextBox Grid.Column="2" Style="{StaticResource TextboxStyle}"  Width="50"  Margin="114,81,236,15" x:Name="eflinput" FontSize="11" />
+
+        </Grid>
+
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0" Style="{StaticResource ButtonTileStyle}" Padding="0" FontSize="12" FontWeight="Normal" Content="Insert" Click="insert_Click"   />
+            <Button Grid.Column="1" Style="{StaticResource ButtonTileStyle}" Padding="0" FontSize="12" FontWeight="Normal" Content="Update" Click="update_Click"   />
+            <Button Grid.Column="2" Style="{StaticResource ButtonTileStyle}" Padding="0" FontSize="12" FontWeight="Normal" Content="Delete" Click="delete_Click"   />
+        </Grid>
 
     </Grid>
 </Page>

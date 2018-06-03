@@ -72,7 +72,7 @@ namespace WpfApp1
             if (sensor != null)
             {
                 sensor.Open();
-
+                //using kinect sensor
                 reader = sensor.OpenMultiSourceFrameReader(FrameSourceTypes.Color | FrameSourceTypes.Depth | FrameSourceTypes.Infrared | FrameSourceTypes.Body);
                 reader.MultiSourceFrameArrived += Reader_MultiSourceFrameArrived;
 
@@ -137,9 +137,7 @@ namespace WpfApp1
 
                     if (body != null)
                     {
-                        //angle4.Update(body.Joints[st4], body.Joints[ce4], body.Joints[en4], 50);  //ankle
-                        //angle9.Update(body.Joints[st9], body.Joints[ce9], body.Joints[en9], 50); //ankle
-
+                        //using vitruvius 
                         if( checkleft_or_right )//rb2.IsChecked==true
                         {
                             if (value == "Hip extension")
@@ -234,7 +232,7 @@ namespace WpfApp1
             angle8.Clear();
         }
 
-
+        //drop down box
         /*private void combo_Loaded(object sender, RoutedEventArgs e)
         {
 
@@ -265,7 +263,7 @@ namespace WpfApp1
         }*/
 
        
-
+        //even on button
         private void hiper(object sender, RoutedEventArgs e)
         {
             value = "Hip extension";

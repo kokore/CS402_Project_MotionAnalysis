@@ -54,6 +54,7 @@ namespace WpfApp1
                 {
                     //ArrayList num = list.GetRange(st,i);
                     //int mode = FindMode(num);
+                    //variable mode is median
                     int mode =(int) list[(i-15)+6];
                     switch (angle)
                     {
@@ -127,6 +128,7 @@ namespace WpfApp1
                 sex = "F";
             }
 
+            //save informatino to db
             connection.Open();
             SqlCommand cmd = connection.CreateCommand();
             cmd.CommandText = "insert into [user] (firstname , lastname , gender , brithday , hipextensionright , hipflexionright , kneeflexionright , shoulderflexionright , elbowflexionright , hipextensionleft , hipflexionleft , kneeflexionleft , shoulderflexionleft , elbowflexionleft) " +

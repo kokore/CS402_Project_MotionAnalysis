@@ -18,6 +18,7 @@ using LightBuzz.Vitruvius;
 using Microsoft.Kinect;
 using static System.Windows.Forms.Timer;
 using System.Collections;
+using System.Media;
 
 namespace WpfApp1
 {
@@ -67,6 +68,8 @@ namespace WpfApp1
         private System.Windows.Forms.Timer timer1;
         int motion = 0;
         public static ArrayList list = new ArrayList();
+        MediaPlayer p1 = new MediaPlayer();
+        int c = 0;
 
         public auto()
         {
@@ -140,9 +143,10 @@ namespace WpfApp1
 
                     Body body = bodies.Closest();
 
+                    
                     if (body != null)
                     {
-                        
+                        //c is check sound play 1 in loop
                         if(motion == 0)
                         {
                             Clear();
@@ -150,11 +154,33 @@ namespace WpfApp1
                             viewer.DrawBody(body);
                             angle4.Update(body.Joints[st4], body.Joints[ce4], body.Joints[en4], 50); //hip
                             Angle.Text = Math.Abs((((int)angle4.Angle - 100))).ToString();
+                            Console.WriteLine("C is {0}",c);
+                            if(t == 9)
+                            {
+                                if (c == 0)
+                                {
+                                    p1.Open(new Uri("C:\\Users\\KoKoR\\Source\\Repos\\CS402_Project_MotionAnalysis\\WpfApp1\\Resources\\Hipextensionright.mp3"));
+                                    p1.Play();
+                                    c++;
+                                }
+                                
+                            }
+
+                            if(t == 6)
+                            {
+                                if (c == 1)
+                                {
+                                    p1.Open(new Uri("C:\\Users\\KoKoR\\Source\\Repos\\CS402_Project_MotionAnalysis\\WpfApp1\\Resources\\START.mp3"));
+                                    p1.Play();
+                                    c++;
+                                }
+                            }
 
                             if (t == 1)
                             {
                                 list.Add(int.Parse(Angle.Text));
                             }
+
                         }
                         else if (motion == 1)
                         {
@@ -163,24 +189,67 @@ namespace WpfApp1
                             viewer.DrawBody(body);
                             angle4.Update(body.Joints[st4], body.Joints[ce4], body.Joints[en4], 50); //hip
                             Angle.Text = Math.Abs((((int)angle4.Angle - 100))).ToString();
+                            if (t == 9)
+                            {
+                                if (c == 2)
+                                {
+                                    p1.Open(new Uri("C:\\Users\\KoKoR\\Source\\Repos\\CS402_Project_MotionAnalysis\\WpfApp1\\Resources\\Hip flexion right.mp3"));
+                                    p1.Play();
+                                    c++;
+                                }
+
+                            }
+                            if (t == 6)
+                            {
+                                if (c == 3)
+                                {
+                                    p1.Open(new Uri("C:\\Users\\KoKoR\\Source\\Repos\\CS402_Project_MotionAnalysis\\WpfApp1\\Resources\\START.mp3"));
+                                    p1.Play();
+                                    c++;
+                                }
+                            }
 
                             if (t == 1)
                             {
                                 list.Add(int.Parse(Angle.Text));
                             }
+
+                            
                         }
                         else if (motion == 2)
                         {
                             Clear();
-                            move.Text = "Kenn flexion right";
+                            move.Text = "Knee flexion right";
                             viewer.DrawBody(body);
                             angle3.Update(body.Joints[st3], body.Joints[ce3], body.Joints[en3], 50); //knee
                             Angle.Text = Math.Abs((((int)angle3.Angle - 180))).ToString();
+                            if (t == 9)
+                            {
+                                if (c == 4)
+                                {
+                                    p1.Open(new Uri("C:\\Users\\KoKoR\\Source\\Repos\\CS402_Project_MotionAnalysis\\WpfApp1\\Resources\\Knee flexion right.mp3"));
+                                    p1.Play();
+                                    c++;
+                                }
+
+                            }
+                            if (t == 6)
+                            {
+                                if (c == 5)
+                                {
+                                    p1.Open(new Uri("C:\\Users\\KoKoR\\Source\\Repos\\CS402_Project_MotionAnalysis\\WpfApp1\\Resources\\START.mp3"));
+                                    p1.Play();
+                                    c++;
+                                }
+                            }
 
                             if (t == 1)
                             {
                                 list.Add(int.Parse(Angle.Text));
                             }
+
+                           
+
                         }
                         else if (motion == 3)
                         {
@@ -189,11 +258,32 @@ namespace WpfApp1
                             viewer.DrawBody(body);
                             angle2.Update(body.Joints[st2], body.Joints[ce2], body.Joints[en2], 50); //shoulder
                             Angle.Text = Math.Abs((((int)angle2.Angle - 120))).ToString();
+                            if (t == 9)
+                            {
+                                if (c == 6)
+                                {
+                                    p1.Open(new Uri("C:\\Users\\KoKoR\\Source\\Repos\\CS402_Project_MotionAnalysis\\WpfApp1\\Resources\\Shoulder flexion right.mp3"));
+                                    p1.Play();
+                                    c++;
+                                }
+
+                            }
+                            if (t == 6)
+                            {
+                                if (c == 7)
+                                {
+                                    p1.Open(new Uri("C:\\Users\\KoKoR\\Source\\Repos\\CS402_Project_MotionAnalysis\\WpfApp1\\Resources\\START.mp3"));
+                                    p1.Play();
+                                    c++;
+                                }
+                            }
 
                             if (t == 1)
                             {
                                 list.Add(int.Parse(Angle.Text));
                             }
+
+                            
                         }
                         else if (motion == 4)
                         {
@@ -202,11 +292,31 @@ namespace WpfApp1
                             viewer.DrawBody(body);
                             angle1.Update(body.Joints[st1], body.Joints[ce1], body.Joints[en1], 50); //elbow
                             Angle.Text = Math.Abs((-1 * ((int)angle1.Angle -180))).ToString();
+                            if (t == 9)
+                            {
+                                if (c == 8)
+                                {
+                                    p1.Open(new Uri("C:\\Users\\KoKoR\\Source\\Repos\\CS402_Project_MotionAnalysis\\WpfApp1\\Resources\\Elbow flexion right.mp3"));
+                                    p1.Play();
+                                    c++;
+                                }
+
+                            }
+                            if (t == 6)
+                            {
+                                if (c == 9) { 
+                                    p1.Open(new Uri("C:\\Users\\KoKoR\\Source\\Repos\\CS402_Project_MotionAnalysis\\WpfApp1\\Resources\\START.mp3"));
+                                    p1.Play();
+                                    c++;
+                                }
+                            }
 
                             if (t == 1)
                             {
                                 list.Add(int.Parse(Angle.Text));
                             }
+
+                            
                         }
                         else if (motion == 5)
                         {
@@ -215,11 +325,31 @@ namespace WpfApp1
                             viewer.DrawBody(body);
                             angle8.Update(body.Joints[st8], body.Joints[ce8], body.Joints[en8], 50); //hip
                             Angle.Text = Math.Abs((-1*((int)angle8.Angle - 270))).ToString();
+                            if (t == 9)
+                            {
+                                if (c == 10)
+                                {
+                                    p1.Open(new Uri("C:\\Users\\KoKoR\\Source\\Repos\\CS402_Project_MotionAnalysis\\WpfApp1\\Resources\\Hip extension left.mp3"));
+                                    p1.Play();
+                                    c++;
+                                }
 
+                            }
+                            if (t == 6)
+                            {
+                                if (c == 11)
+                                {
+                                    p1.Open(new Uri("C:\\Users\\KoKoR\\Source\\Repos\\CS402_Project_MotionAnalysis\\WpfApp1\\Resources\\START.mp3"));
+                                    p1.Play();
+                                    c++;
+                                }
+                            }
                             if (t == 1)
                             {
                                 list.Add(int.Parse(Angle.Text));
                             }
+
+                            
                         }
                         else if (motion == 6)
                         {
@@ -228,11 +358,32 @@ namespace WpfApp1
                             viewer.DrawBody(body);
                             angle8.Update(body.Joints[st8], body.Joints[ce8], body.Joints[en8], 50); //hip
                             Angle.Text = Math.Abs(((-1 * ((int)angle8.Angle - 270)))).ToString();
+                            if (t == 9)
+                            {
+                                if (c == 12)
+                                {
+                                    p1.Open(new Uri("C:\\Users\\KoKoR\\Source\\Repos\\CS402_Project_MotionAnalysis\\WpfApp1\\Resources\\Hip flexion left.mp3"));
+                                    p1.Play();
+                                    c++;
+                                }
+
+                            }
+                            if (t == 6)
+                            {
+                                if (c == 13)
+                                {
+                                    p1.Open(new Uri("C:\\Users\\KoKoR\\Source\\Repos\\CS402_Project_MotionAnalysis\\WpfApp1\\Resources\\START.mp3"));
+                                    p1.Play();
+                                    c++;
+                                }
+                            }
 
                             if (t == 1)
                             {
                                 list.Add(int.Parse(Angle.Text));
                             }
+
+                            
                         }
                         else if (motion == 7)
                         {
@@ -241,11 +392,32 @@ namespace WpfApp1
                             viewer.DrawBody(body);
                             angle7.Update(body.Joints[st7], body.Joints[ce7], body.Joints[en7], 50); //knee
                             Angle.Text = Math.Abs((-1*((int)angle7.Angle - 180))).ToString();
+                            if (t == 9)
+                            {
+                                if (c == 14)
+                                {
+                                    p1.Open(new Uri("C:\\Users\\KoKoR\\Source\\Repos\\CS402_Project_MotionAnalysis\\WpfApp1\\Resources\\Knee flexion left.mp3"));
+                                    p1.Play();
+                                    c++;
+                                }
+
+                            }
+                            if (t == 6)
+                            {
+                                if (c == 15)
+                                {
+                                    p1.Open(new Uri("C:\\Users\\KoKoR\\Source\\Repos\\CS402_Project_MotionAnalysis\\WpfApp1\\Resources\\START.mp3"));
+                                    p1.Play();
+                                    c++;
+                                }
+                            }
 
                             if (t == 1)
                             {
                                 list.Add(int.Parse(Angle.Text));
                             }
+
+                           
                         }
                         else if (motion == 8)
                         {
@@ -254,11 +426,32 @@ namespace WpfApp1
                             viewer.DrawBody(body);
                             angle6.Update(body.Joints[st6], body.Joints[ce6], body.Joints[en6], 50); //shoulder
                             Angle.Text = Math.Abs( (-1*((int)angle6.Angle - 240))).ToString();
+                            if (t == 9)
+                            {
+                                if (c == 16)
+                                {
+                                    p1.Open(new Uri("C:\\Users\\KoKoR\\Source\\Repos\\CS402_Project_MotionAnalysis\\WpfApp1\\Resources\\Shoulder flexion left.mp3"));
+                                    p1.Play();
+                                    c++;
+                                }
+
+                            }
+                            if (t == 6)
+                            {
+                                if (c == 17)
+                                {
+                                    p1.Open(new Uri("C:\\Users\\KoKoR\\Source\\Repos\\CS402_Project_MotionAnalysis\\WpfApp1\\Resources\\START.mp3"));
+                                    p1.Play();
+                                    c++;
+                                }
+                            }
 
                             if (t == 1)
                             {
                                 list.Add(int.Parse(Angle.Text));
                             }
+
+                        
                         }
                         else if (motion == 9)
                         {
@@ -268,10 +461,32 @@ namespace WpfApp1
                             angle5.Update(body.Joints[st5], body.Joints[ce5], body.Joints[en5], 50); //elbow
                             Angle.Text = Math.Abs((((int)angle5.Angle - 180))) .ToString();
 
-                            if(t == 1)
+                            if (t == 9)
+                            {
+                                if (c == 18)
+                                {
+                                    p1.Open(new Uri("C:\\Users\\KoKoR\\Source\\Repos\\CS402_Project_MotionAnalysis\\WpfApp1\\Resources\\Elbow flexion left.mp3"));
+                                    p1.Play();
+                                    c++;
+                                }
+
+                            }
+                            if (t == 6)
+                            {
+                                if (c == 19)
+                                {
+                                    p1.Open(new Uri("C:\\Users\\KoKoR\\Source\\Repos\\CS402_Project_MotionAnalysis\\WpfApp1\\Resources\\START.mp3"));
+                                    p1.Play();
+                                    c++;
+                                }
+                            }
+
+                            if (t == 1)
                             {
                                 list.Add(int.Parse(Angle.Text));
                             }
+
+                          
                         }
                         else if (motion == 10)
                         {
@@ -302,10 +517,10 @@ namespace WpfApp1
             timer1.Interval = 1000;
             timer1.Tick += new EventHandler(timer1_Tick);
             timer1.Enabled = true;
-            t =6;
+            t =11; //second
 
     }
-
+        //timer
         private void timer1_Tick(object sender, EventArgs e)
         {
             t--;
@@ -314,7 +529,7 @@ namespace WpfApp1
             {
 
                 motion++;
-                t = 6;
+                t = 11; //second
                 timer1.Start();
             }
         }

@@ -34,7 +34,7 @@
             <TextBlock Style="{StaticResource HeaderTextBlockStyle}" Foreground="Black" FontSize="40" HorizontalAlignment="Left" Margin="425,195,0,0" TextWrapping="Wrap" Text="Username" VerticalAlignment="Top"/>
             <TextBlock Style="{StaticResource HeaderTextBlockStyle}" Foreground="Black" FontSize="40" HorizontalAlignment="Left" Margin="425,300,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top"/>
             <TextBox Name="username_text" FontSize="35" HorizontalAlignment="Left" Height="40" Margin="720,210,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="173"/>
-            <TextBox Name="password_text" FontSize="35" HorizontalAlignment="Left" Height="40" Margin="720,310,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="173"/>
+            <PasswordBox PasswordChar="*" Name="password_text" FontSize="35" HorizontalAlignment="Left" Height="40" Margin="720,310,0,0" VerticalAlignment="Top" Width="173"/>
 
         </Grid>
         <Button Click="login_btn" Style="{StaticResource ButtonTileStyle}" FontSize="25" Content="Login" HorizontalAlignment="Left" Margin="588,414,0,0" Grid.Row="1" VerticalAlignment="Top" Width="126" Height="56"/>
